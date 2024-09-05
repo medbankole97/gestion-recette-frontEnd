@@ -1,5 +1,79 @@
-# Vue 3 + Vite
+# Gestionnaire de Recettes
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Ce projet est une application web de gestion de recettes développée avec Vue.js 3, Pinia pour la gestion d'état, et Vue Router pour la navigation. L'application permet aux utilisateurs de créer, lister, modifier et supprimer des recettes.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Fonctionnalités
+
+**Gestion des Recettes**
+
+- Ajouter une nouvelle recette
+- Lister toutes les recettes
+- Modifier une recette existante
+- Supprimer une recette
+- Visualiser les détails d'une recette
+
+
+
+## Installation
+
+### Prérequis
+- Node.js (version 14.x ou supérieure)
+- Vue.js 3 
+- Bootstrap 5.x (inclus dans le projet)
+- PINIA
+
+### Étapes d'installation
+
+1. Clonez le dépôt :
+
+    ```bash
+    git clone https://github.com/Aichetou-Gaye/gestion-recettes.git
+    ```
+
+2. Accédez au répertoire du projet :
+
+    ```bash
+    cd gestion-recettes
+
+    ```
+
+3. Installez les dépendances :
+
+    Avec NPM :
+
+    ```bash
+    npm install
+    ```
+
+4. Lancez l'application en mode développement :
+
+    Avec NPM :
+
+    ```bash
+    npm run dev
+    ```
+
+### Outils Utilisés
+`Vue.js 3` : Framework JavaScript pour construire l'interface utilisateur.
+
+`Vue Router` : Gestion de la navigation entre les pages de l'application.
+
+`Pinia` : Gestion d'état centralisée pour les recettes.
+
+`Bootstrap` :Framework CSS pour le design et la mise en page réactive.
+
+`Vite` : Outil de build pour le développement rapide avec Vue.js.
+
+## Utilisation
+
+- Naviguez entre les pages de menu via la barre de navigation.
+- Utilisez les formulaires pour ajouter ou modifier des recettes.
+- Visualisez les détails d'une recette en cliquant sur l'icône d'œil.
+
+
+
+##  Auteur
+[Aichetou Gaye](https://github.com/Aichetou-Gaye/)
+
+
+
