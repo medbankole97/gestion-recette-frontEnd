@@ -12,8 +12,6 @@ Ce projet est une application web de gestion de recettes développée avec Vue.j
 - Supprimer une recette
 - Visualiser les détails d'une recette
 
-
-
 ## Installation
 
 ### Prérequis
@@ -27,13 +25,13 @@ Ce projet est une application web de gestion de recettes développée avec Vue.j
 1. Clonez le dépôt :
 
     ```bash
-    git clone https://github.com/Aichetou-Gaye/gestion-recettes.git
+    git clone https://github.com/Aichetou-Gaye/gestion-recette.git
     ```
 
 2. Accédez au répertoire du projet :
 
     ```bash
-    cd gestion-recettes
+    cd gestion-recette
 
     ```
 
@@ -69,8 +67,8 @@ Ce projet est une application web de gestion de recettes développée avec Vue.j
 - Naviguez entre les pages de menu via la barre de navigation.
 - Utilisez les formulaires pour ajouter ou modifier des recettes.
 - Visualisez les détails d'une recette en cliquant sur l'icône d'œil.
-
-
+- Naviguez vers patisserie pour avoir des idées de recettes
+- Naviguez vers Cuisine pour une inspiration de recettes
 
 ##  Auteur
 [Aichetou Gaye](https://github.com/Aichetou-Gaye/)
