@@ -4,7 +4,9 @@ import Home from '../components/Home.vue'
 import Ajout from '../components/recettes/AjoutRecette.vue'
 import Modifie from '../components/recettes/ModifieRecette.vue'
 import Liste from '../components/recettes/ListeRecette.vue'
-import Detail from '../components/recettes/DetailRecette.vue'
+
+import Patisserie from '../views/Patisserie.vue'
+import Cuisine from '../views/Cuisine.vue'
 
 const routes = [
     {
@@ -28,9 +30,14 @@ const routes = [
         component: Modifie,
     },
     {
-        path: "/recette/show/:id",
-        name: 'detail-recette',
-        component: Detail,
+        path: "/recette/patisserie",
+        name: 'patisserie',
+        component: Patisserie,
+    },
+    {
+        path: "/recette/cuisine",
+        name: 'cuisine',
+        component: Cuisine,
     },
 ]
 

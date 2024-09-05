@@ -11,5 +11,8 @@
 </script>
 
 
-<style scoped>
+<style>
+.container-fluid {
+  background-color: beige;
+}
 </style>
