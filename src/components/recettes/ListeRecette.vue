@@ -17,11 +17,13 @@
     <div class="contact-list-table">
       <table class="table table-hover table-bordered">
         <thead>
+          <tr>
           <th scope="col">#</th>
           <th scope="col">Titre</th>
           <th scope="col">Ingredients</th>
           <th scope="col">Type</th>
           <th scope="col">Action</th>
+          </tr>
         </thead>
         <tbody>
           <tr v-if="store.recettes.length === 0">
@@ -48,7 +50,8 @@
         </tbody>
       </table>
 
-      <div v-if="isVisible" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div v-if="isVisible" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
