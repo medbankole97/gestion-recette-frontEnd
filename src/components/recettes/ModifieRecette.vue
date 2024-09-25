@@ -47,8 +47,8 @@ const idRecette = route.params.id
 
 const form = reactive({
   titre: store.recetteForm.titre,
-  ingredients: store.recetteForm.titre,
-  type: store.recetteForm.ingredients,
+  ingredients: store.recetteForm.ingredients,
+  type: store.recetteForm.type,
 })
 
 const onSubmit = () => {

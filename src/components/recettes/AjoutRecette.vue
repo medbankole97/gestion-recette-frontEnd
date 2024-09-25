@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="hight"></div>
     <div class="mt-2">
-      <h3 class="text-center">Ajouter une recette :</h3>
+      <h3 class="text-center">{{$t("recette.create.titre")}}</h3>
       <div class="w-50 m-auto">
         <form @submit.prevent="onSubmit">
           <div class="mb-3">
@@ -36,9 +36,10 @@
 </template>
 
 <script setup>
-
 import { useRecetteStore } from '@store'
+import { I18nD, useI18n } from 'vue-i18n';
 
+const t = useI18n()
 const store = useRecetteStore()
 const recette = store.recetteForm
 
