@@ -7,6 +7,12 @@
       <router-link to="/recette/patisserie" class="btn btn-outline-none me-3">{{ $t("recette.list.nav") }}</router-link>
       <router-link to="/recette/cuisine" class="btn btn-outline-none">{{ $t("recette.list.nav2") }}</router-link>
     </form>
+    <div>
+      <select id="langue" @change="change()">
+        <option value="en">En</option>
+        <option value="fr">Fr</option>
+      </select>
+    </div>
   </nav>
   <div class="container-fluid">
     <h2>{{ $t("recette.list.titre") }}</h2>
@@ -92,6 +98,10 @@ const current = ref(null)
 const view = (recette) => {
   current.value = recette
 }
+
+// const change() {
+  
+// }
 
 
 </script>
