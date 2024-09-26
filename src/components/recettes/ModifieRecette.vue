@@ -1,34 +1,35 @@
 <template>
   <div class="container-fluid">
-    <div class="hight"></div>
-    <div class="mt-2">
-      <h3 class="text-center">Modifier la recette :</h3>
-      <div class="w-50 m-auto">
-        <form @submit.prevent="onSubmit">
+    <div class="row">
+      <div class="col-md-7 m-auto">
+        <h3 class="text-center">{{ $t("recette.edit.titre") }}</h3>
+        <form class="me-auto" @submit.prevent="onSubmit">
           <div class="mb-3">
-            <label for="titre" class="form-label">Titre</label>
+            <label for="titre" class="form-label">{{ $t("recette.edit.row1") }}</label>
             <input type="text" class="form-control" id="titre" v-model="form.titre">
           </div>
           <div class="mb-3">
-            <label for="ingredients" class="form-label">Ingredients</label>
+            <label for="ingredients" class="form-label">{{ $t("recette.edit.row2") }}</label>
             <input type="text" class="form-control" id="ingredients" v-model="form.ingredients">
           </div>
           <div class="mb-3">
-            <label for="type" class="form-label">Type</label>
+            <label for="type" class="form-label">{{ $t("recette.edit.row3.title") }}</label>
             <select class="form-control" id="type" v-model="form.type">
-              <option value="Dessert">Dessert</option>
-              <option value="Entrée">Entrée</option>
-              <option value="Plat">Plat</option>
+              <option value="Dessert">{{ $t("recette.edit.row3.select1") }}</option>
+              <option value="Entrée">{{ $t("recette.edit.row3.select1") }}</option>
+              <option value="Plat">{{ $t("recette.edit.row3.select1") }}</option>
             </select>
           </div>
 
           <div class="d-flex justify-content-between">
-            <router-link to="/recette-list" class="btn btn-success"><i class="fa-solid fa-arrow-left"></i></router-link>
-            <button class="btn btn-success">Enregistrer</button>
+            <router-link to="/recette" class="btn btn-success"><i class="fa-solid fa-arrow-left"></i></router-link>
+            <button class="btn btn-success">{{ $t("recette.edit.boutton") }}</button>
           </div>
         </form>
       </div>
+      <div class="col-md-5 hight"></div>
     </div>
+
 
   </div>
 
@@ -38,23 +39,21 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
 import { useRecetteStore } from '@store'
-import { reactive } from 'vue';
+import { I18nD, useI18n } from 'vue-i18n';
+
+const t = useI18n()
 const store = useRecetteStore()
 const route = useRoute();
 const router = useRouter()
 
 const idRecette = route.params.id
 
-const form = reactive({
-  titre: store.recetteForm.titre,
-  ingredients: store.recetteForm.ingredients,
-  type: store.recetteForm.type,
-})
+const form = store.getRecipeById(idRecette)
 
 const onSubmit = () => {
-  if(form.titre && form.ingredients && form.type) {
+  if (form.titre && form.ingredients && form.type) {
     store.edit(idRecette, form)
-    router.push('/recette-list')
+    router.push('/recette')
   } else {
     console.log("Please fill all fields in form");
   }
@@ -65,9 +64,14 @@ const onSubmit = () => {
 .container-fluid {
   height: 100vh;
 }
+
+.row {
+  height: 100vh;
+}
+
 .hight {
-  background-image: url('/src/assets/patisserie/chocolat.jpg');
-  height: 30vh;
-  background-repeat:round;
+  background-image: url('/src/assets/patisserie/beignet.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

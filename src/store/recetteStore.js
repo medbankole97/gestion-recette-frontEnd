@@ -30,6 +30,10 @@ export const useRecetteStore = defineStore("recetteStore", {
       this.recetteForm.ingredients = null;
       this.recetteForm.type = null;
     },
+    getRecipeById(id) {
+      const result = this.recettes.find(r => r.id == id)
+      return result
+    },
     edit(id, newRecette) {
       const index = this.recettes.findIndex((f) => f.id == id);
       if (index !== -1) {
@@ -61,11 +65,6 @@ export const useRecetteStore = defineStore("recetteStore", {
       };
       this.recettes.push(recette);
       this.resetForm()
-    },
-    getById(id) {
-      const recette = this.recettes.find((r) => r.id == id);
-
-      return recette;
-    },
+    }
   },
 });

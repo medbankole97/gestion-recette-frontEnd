@@ -4,30 +4,29 @@
       <img src="/src/assets/logo.png" alt="Logo" class="logo">
     </router-link>
     <form class="d-flex justify-content-around px-5">
-      <router-link to="/recette/patisserie" class="btn btn-outline-none me-3">Patisserie</router-link>
-      <router-link to="/recette/cuisine" class="btn btn-outline-none">Cuisine</router-link>
+      <router-link to="/recette/patisserie" class="btn btn-outline-none me-3">{{ $t("recette.list.nav") }}</router-link>
+      <router-link to="/recette/cuisine" class="btn btn-outline-none">{{ $t("recette.list.nav2") }}</router-link>
     </form>
   </nav>
   <div class="container-fluid">
-    <h2> Liste des recettes </h2>
+    <h2>{{ $t("recette.list.titre") }}</h2>
     <div class="d-flex justify-content-end mb-4 ">
-      <router-link to="/recette/new" class="btn btn-danger "><i class="fa-solid fa-plus"></i> Nouvelle
-        Recette</router-link>
+      <router-link to="/recette/new" class="btn btn-danger "><i class="fa-solid fa-plus"></i> {{ $t("recette.list.boutton") }}</router-link>
     </div>
     <div class="contact-list-table">
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
           <th scope="col">#</th>
-          <th scope="col">Titre</th>
-          <th scope="col">Ingredients</th>
-          <th scope="col">Type</th>
-          <th scope="col">Action</th>
+          <th scope="col">{{ $t("recette.list.col1") }}</th>
+          <th scope="col">{{ $t("recette.list.col2") }}</th>
+          <th scope="col">{{ $t("recette.list.col3") }}</th>
+          <th scope="col">{{ $t("recette.list.col4") }}</th>
           </tr>
         </thead>
         <tbody>
           <tr v-if="store.recettes.length === 0">
-            <td colspan="5">No data</td>
+            <td colspan="5" class="text-center">{{ $t("recette.list.data") }}</td>
           </tr>
           <tr v-for="item in store.recettes" :key="item.id">
             <td scope="row">{{ `# ${item.id} ` }}</td>
@@ -50,21 +49,21 @@
         </tbody>
       </table>
 
-      <div v-if="isVisible" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title fw-bold text-center text-danger" id="exampleModalLabel">Details de la recette </h5>
+              <h5 class="modal-title fw-bold text-center text-danger" id="exampleModalLabel">{{ $t("recette.show.titre") }}</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p><span class="fw-bold">Titre :</span> {{ current.titre }}</p>
-              <p><span class="fw-bold">Ingredients : </span>{{ current.ingredients }}</p>
-              <p><span class="fw-bold">Type : </span>{{ current.type }}</p>
+              <p><span class="fw-bold">{{ $t("recette.show.row1") }} :</span> {{ current?.titre }}</p>
+              <p><span class="fw-bold">{{ $t("recette.show.row2") }} : </span>{{ current?.ingredients }}</p>
+              <p><span class="fw-bold">{{ $t("recette.show.row3") }} : </span>{{ current?.type }}</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">{{ $t("recette.show.boutton") }}</button>
             </div>
           </div>
         </div>
@@ -78,6 +77,9 @@
 import { useRecetteStore } from '@store'
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { I18nD, useI18n } from 'vue-i18n';
+
+const t = useI18n()
 
 const store = useRecetteStore()
 const router = useRouter()
@@ -87,10 +89,7 @@ const destroy = (id) => {
 }
 
 const current = ref(null)
-const isVisible = ref(false)
-
 const view = (recette) => {
-  isVisible.value = true
   current.value = recette
 }
 

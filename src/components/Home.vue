@@ -3,7 +3,7 @@
     <div class="title d-flex justify-content-end
      align-items-end">
       <h1>Waañu Bideew</h1>
-      <router-link to="/recette-list" class="btn btn-lg">Bismillah</router-link>
+      <router-link to="/recette" class="btn btn-lg">Bismillah</router-link>
     </div>
 
   </div>

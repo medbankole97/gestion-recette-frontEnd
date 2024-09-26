@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <nav>
-      <router-link to="/recette-list" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-left"></i></router-link>
+      <router-link to="/recette" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-left"></i></router-link>
     </nav>
     <h2 class="text-center">Pour de bons desserts <br> Ou simplement l'envie de vous faire plaisir <i class="fa-solid fa-face-smile"></i></h2>
     <div class="row gx-3 gy-3 mt-5">

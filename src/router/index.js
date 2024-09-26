@@ -15,29 +15,34 @@ const routes = [
         component: Home,
     },
     {
-        path: "/recette-list",
-        name: 'recettes',
-        component: Liste,
-    },
-    {
-        path: "/recette/new",
-        name: 'ajout-recette',
-        component: Ajout,
-    },
-    {
-        path: "/recette/edit/:id",
-        name: 'modifier-recette',
-        component: Modifie,
-    },
-    {
-        path: "/recette/patisserie",
-        name: 'patisserie',
-        component: Patisserie,
-    },
-    {
-        path: "/recette/cuisine",
-        name: 'cuisine',
-        component: Cuisine,
+        path: "/recette",
+        children: [
+            {
+                path: "",
+                name: 'list-recette',
+                component: Liste,
+            },
+            {
+                path: "new",
+                name: 'ajout-recette',
+                component: Ajout,
+            },
+            {
+                path: "edit/:id",
+                name: 'modifier-recette',
+                component: Modifie,
+            },
+            {
+                path: "patisserie",
+                name: 'patisserie',
+                component: Patisserie,
+            },
+            {
+                path: "cuisine",
+                name: 'cuisine',
+                component: Cuisine,
+            },
+        ]
     },
 ]
 
