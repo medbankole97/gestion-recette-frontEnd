@@ -1,7 +1,6 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <!-- Formulaire de saisie (largeur auto sur grands écrans) -->
       <div class="col-12 col-md-8 col-lg-6 m-auto">
         <h3 class="text-center">{{ $t("recette.create.titre") }}</h3>
         <form class="me-auto" @submit.prevent="onSubmit">
@@ -89,16 +88,16 @@ const onSubmit = () => {
   height: 100vh;
 }
 
-/* Media query pour les écrans plus petits (ex: mobiles) */
+
 @media (max-width: 768px) {
   .hight {
-    height: 300px; /* Réduit la taille de l'image de fond pour les petits écrans */
+    height: 300px; 
   }
 }
 
 @media (max-width: 576px) {
   .hight {
-    display: none; /* Masquer l'image de fond sur les très petits écrans */
+    display: none; 
   }
 
   .col-12 {
