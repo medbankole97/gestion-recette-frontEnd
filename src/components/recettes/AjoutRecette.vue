@@ -24,6 +24,7 @@
           <div class="mb-3">
             <label for="categorie" class="form-label">{{ $t("recette.create.row4.title") }}</label>
             <select class="form-control" id="categorie" v-model="recette.categorie" required>
+              <option v-if="!categories.length" disabled>{{ $t('recette.create.noCategories') }}</option>
               <option v-for="categorie in categories" :key="categorie.id" :value="categorie.nom">
                 {{ categorie.nom }}
               </option>
@@ -47,16 +48,13 @@ import { useCategorieStore } from '@store';
 import { useI18n } from 'vue-i18n';
 import { onMounted, ref } from 'vue';
 
-// Accéder aux catégories via le store des catégories
 const categorieStore = useCategorieStore();
 const categories = ref([]);
 
-// Charger les catégories lors du montage du composant
 onMounted(() => {
   categories.value = categorieStore.categories;
 });
 
-// Utilisation du store pour gérer les recettes
 const recetteStore = useRecetteStore();
 const recette = recetteStore.recetteForm;
 
