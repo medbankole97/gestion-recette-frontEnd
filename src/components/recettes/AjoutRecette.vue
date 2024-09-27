@@ -1,7 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-7 m-auto">
+      <!-- Formulaire de saisie (largeur auto sur grands écrans) -->
+      <div class="col-12 col-md-8 col-lg-6 m-auto">
         <h3 class="text-center">{{ $t("recette.create.titre") }}</h3>
         <form class="me-auto" @submit.prevent="onSubmit">
           <div class="mb-3">
@@ -20,6 +21,7 @@
               <option value="Plat">{{ $t("recette.create.row3.select3") }}</option>
             </select>
           </div>
+
           <!-- Sélection de catégorie -->
           <div class="mb-3">
             <label for="categorie" class="form-label">{{ $t("recette.create.row4.title") }}</label>
@@ -31,16 +33,22 @@
             </select>
           </div>
 
+          <!-- Boutons -->
           <div class="d-flex justify-content-between">
-            <router-link to="/recette" class="btn btn-success"><i class="fa-solid fa-arrow-left"></i></router-link>
+            <router-link to="/recette" class="btn btn-success">
+              <i class="fa-solid fa-arrow-left"></i>
+            </router-link>
             <button class="btn btn-success">{{ $t("recette.create.boutton") }}</button>
           </div>
         </form>
       </div>
-      <div class="col-md-5 hight"></div>
+      
+      <!-- Image de droite cachée sur les petits écrans -->
+      <div class="col-md-5 d-none d-md-block hight"></div>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { useRecetteStore } from '@store';
@@ -71,16 +79,31 @@ const onSubmit = () => {
 
 <style scoped>
 .container-fluid {
-  height: 100vh;
-}
-
-.row {
-  height: 100vh;
+  padding: 15px;
 }
 
 .hight {
   background-image: url('/src/assets/cuisine/kebab.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
 }
+
+/* Media query pour les écrans plus petits (ex: mobiles) */
+@media (max-width: 768px) {
+  .hight {
+    height: 300px; /* Réduit la taille de l'image de fond pour les petits écrans */
+  }
+}
+
+@media (max-width: 576px) {
+  .hight {
+    display: none; /* Masquer l'image de fond sur les très petits écrans */
+  }
+
+  .col-12 {
+    margin-top: 20px;
+  }
+}
+
 </style>

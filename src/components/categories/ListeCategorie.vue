@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar bg-white px-5">
+    <!-- <nav class="navbar bg-white px-5">
       <router-link to="/">
         <img src="/src/assets/logo.png" alt="Logo" class="logo">
       </router-link>
@@ -14,7 +14,7 @@
           <option value="fr">Fr</option>
         </select>
       </div>
-    </nav>
+    </nav> -->
 
     <div class="container-fluid">
       <h2>{{ $t("categorie.list.titre") }}</h2>

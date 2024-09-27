@@ -90,9 +90,15 @@ const t = useI18n()
 const store = useRecetteStore()
 const router = useRouter()
 
+// const destroy = (id) => {
+//   store.destroy(id)
+// }
+
 const destroy = (id) => {
-  store.destroy(id)
-}
+  if (confirm("Êtes-vous sûr de vouloir supprimer cette catégorie ?")) {
+    store.destroy(id);
+  }
+};
 
 const current = ref(null)
 const view = (recette) => {
