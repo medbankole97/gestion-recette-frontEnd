@@ -1,20 +1,6 @@
 <template>
   <div>
-    <!-- <nav class="navbar bg-white px-5">
-      <router-link to="/">
-        <img src="/src/assets/logo.png" alt="Logo" class="logo">
-      </router-link>
-      <form class="d-flex justify-content-around px-5">
-        <router-link to="/recette/patisserie" class="btn btn-outline-none me-3">{{ $t("recette.list.nav") }}</router-link>
-        <router-link to="/recette/cuisine" class="btn btn-outline-none">{{ $t("recette.list.nav2") }}</router-link>
-      </form>
-      <div>
-        <select id="langue" @change="changeLanguage">
-          <option value="en">En</option>
-          <option value="fr">Fr</option>
-        </select>
-      </div>
-    </nav> -->
+
 
     <div class="container-fluid">
       <h2>{{ $t("categorie.list.titre") }}</h2>
@@ -95,10 +81,7 @@ const removeCategorie = (id) => {
   }
 };
 
-const changeLanguage = (event) => {
-  const { locale } = useI18n();
-  locale.value = event.target.value;
-};
+
 </script>
 
 <style scoped>
