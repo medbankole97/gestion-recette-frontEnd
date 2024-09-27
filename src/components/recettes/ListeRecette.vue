@@ -1,14 +1,11 @@
 <template>
-   <nav class="navbar bg-white px-5">
+  <nav class="navbar bg-white px-5">
     <router-link to="/">
       <img src="/src/assets/logo.png" alt="Logo" class="logo">
     </router-link>
     <form class="d-flex justify-content-around px-5">
       <router-link to="/recette/patisserie" class="btn btn-outline-none me-3">{{ $t("recette.list.nav") }}</router-link>
       <router-link to="/recette/cuisine" class="btn btn-outline-none">{{ $t("recette.list.nav2") }}</router-link>
-      <div v-for="categorie in categories" :key="categorie.id">
-        <router-link :to="`/recette/categorie/${categorie.nom}`" class="btn btn-outline-none me-3">{{ categorie.nom }}</router-link>
-      </div>
     </form>
     <div>
       <select id="langue" @change="changeLanguage">

@@ -24,7 +24,7 @@
           <div class="mb-3">
             <label for="categorie" class="form-label">{{ $t("recette.create.row4.title") }}</label>
             <select class="form-control" id="categorie" v-model="recette.categorie" required>
-              <option v-for="categorie in store.categories" :key="categorie.id" :value="categorie.nom">
+              <option v-for="categorie in categories" :key="categorie.id" :value="categorie.nom">
                 {{ categorie.nom }}
               </option>
             </select>
@@ -42,16 +42,29 @@
 </template>
 
 <script setup>
-import { useRecetteStore } from '@store'
+import { useRecetteStore } from '@store';
+import { useCategorieStore } from '@store';
 import { useI18n } from 'vue-i18n';
+import { onMounted, ref } from 'vue';
+
+// Accéder aux catégories via le store des catégories
+const categorieStore = useCategorieStore();
+const categories = ref([]);
+
+// Charger les catégories lors du montage du composant
+onMounted(() => {
+  categories.value = categorieStore.categories;
+});
+
+// Utilisation du store pour gérer les recettes
+const recetteStore = useRecetteStore();
+const recette = recetteStore.recetteForm;
 
 const { t } = useI18n();
-const store = useRecetteStore();
-const recette = store.recetteForm;
 
 const onSubmit = () => {
   if (recette.titre && recette.ingredients && recette.type && recette.categorie) {
-    store.add();
+    recetteStore.add();
   } else {
     console.log("Veuillez remplir tous les champs du formulaire");
   }
