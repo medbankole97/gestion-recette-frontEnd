@@ -6,18 +6,28 @@
         <form class="me-auto" @submit.prevent="onSubmit">
           <div class="mb-3">
             <label for="titre" class="form-label">{{ $t("recette.create.row1") }}</label>
-            <input type="text" class="form-control" id="titre" v-model="recette.titre">
+            <input type="text" class="form-control" id="titre" v-model="recette.titre" required>
           </div>
           <div class="mb-3">
             <label for="ingredients" class="form-label">{{ $t("recette.create.row2") }}</label>
-            <input type="text" class="form-control" id="ingredients" v-model="recette.ingredients">
+            <input type="text" class="form-control" id="ingredients" v-model="recette.ingredients" required>
           </div>
           <div class="mb-3">
             <label for="type" class="form-label">{{ $t("recette.create.row3.title") }}</label>
-            <select class="form-control" id="type" v-model="recette.type">
+            <select class="form-control" id="type" v-model="recette.type" required>
               <option value="Dessert">{{ $t("recette.create.row3.select1") }}</option>
               <option value="Entrée">{{ $t("recette.create.row3.select2") }}</option>
               <option value="Plat">{{ $t("recette.create.row3.select3") }}</option>
+            </select>
+          </div>
+          <!-- Sélection de catégorie -->
+          <div class="mb-3">
+            <label for="categorie" class="form-label">{{ $t("recette.create.row4.title") }}</label>
+            <select class="form-control" id="categorie" v-model="recette.categorie" required>
+              <option v-if="!categories.length" disabled>{{ $t('recette.create.noCategories') }}</option>
+              <option v-for="categorie in categories" :key="categorie.id" :value="categorie.nom">
+                {{ categorie.nom }}
+              </option>
             </select>
           </div>
 
@@ -29,28 +39,34 @@
       </div>
       <div class="col-md-5 hight"></div>
     </div>
-
-
   </div>
-
-
 </template>
 
 <script setup>
-import { useRecetteStore } from '@store'
-import { I18nD, useI18n } from 'vue-i18n';
+import { useRecetteStore } from '@store';
+import { useCategorieStore } from '@store';
+import { useI18n } from 'vue-i18n';
+import { onMounted, ref } from 'vue';
 
-const t = useI18n()
-const store = useRecetteStore()
-const recette = store.recetteForm
+const categorieStore = useCategorieStore();
+const categories = ref([]);
+
+onMounted(() => {
+  categories.value = categorieStore.categories;
+});
+
+const recetteStore = useRecetteStore();
+const recette = recetteStore.recetteForm;
+
+const { t } = useI18n();
 
 const onSubmit = () => {
-  if (recette.titre && recette.ingredients && recette.type) {
-    store.add()
+  if (recette.titre && recette.ingredients && recette.type && recette.categorie) {
+    recetteStore.add();
   } else {
-    console.log("Please fill all fields in form");
+    console.log("Veuillez remplir tous les champs du formulaire");
   }
-}
+};
 </script>
 
 <style scoped>

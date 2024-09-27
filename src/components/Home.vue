@@ -1,15 +1,14 @@
 <template>
-  <div class="container-fluid p-5 ">
-    <div class="title d-flex justify-content-end
-     align-items-end">
+  <div class="container-fluid p-5">
+    <div class="menu d-flex justify-content-center mb-4">
+      <router-link to="/recette" class="btn btn-lg me-3">Recettes</router-link>
+      <router-link to="/categorie" class="btn btn-lg">Catégories</router-link>
+    </div>
+    <div class="title d-flex justify-content-end align-items-end">
       <h1>Waañu Bideew</h1>
       <router-link to="/recette" class="btn btn-lg">Bismillah</router-link>
     </div>
-
   </div>
-
-
-
 </template>
 
 <script setup>
@@ -30,11 +29,13 @@
   flex-direction: column;
 }
 .btn {
-  /* width: 150px; */
   color: black;
   background-color: burlywood;
   font-size: 20px;
   margin-top: 5vh;
   height: 50px;
+}
+.menu {
+  margin-bottom: 2vh; /* Ajoutez un peu d'espace entre le menu et le titre */
 }
 </style>

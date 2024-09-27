@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="container">
     <nav>
       <router-link to="/recette" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-left"></i></router-link>
@@ -142,4 +142,4 @@
   width: 100%;
   height: 15rem;
 }
-</style>
+</style> -->

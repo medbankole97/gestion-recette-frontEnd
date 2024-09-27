@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar bg-white px-5">
+  <!-- <nav class="navbar bg-white px-5">
     <router-link to="/">
       <img src="/src/assets/logo.png" alt="Logo" class="logo">
     </router-link>
@@ -8,12 +8,12 @@
       <router-link to="/recette/cuisine" class="btn btn-outline-none">{{ $t("recette.list.nav2") }}</router-link>
     </form>
     <div>
-      <select id="langue" @change="change()">
+      <select id="langue" @change="changeLanguage">
         <option value="en">En</option>
         <option value="fr">Fr</option>
       </select>
     </div>
-  </nav>
+  </nav> -->
   <div class="container-fluid">
     <h2>{{ $t("recette.list.titre") }}</h2>
     <div class="d-flex justify-content-end mb-4 ">
@@ -102,7 +102,11 @@ const view = (recette) => {
 // const change() {
   
 // }
+const { locale } = useI18n();
 
+function changeLanguage(event)  {
+  locale.value = event.target.value;
+}
 
 </script>
 
