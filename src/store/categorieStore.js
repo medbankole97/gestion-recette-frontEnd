@@ -1,64 +1,44 @@
+import axios from "axios";
 import { defineStore } from "pinia";
 import { reactive } from "vue";
 
 export const useCategorieStore = defineStore("categorieStore", {
   state: () => ({
-    categories: [
-      { id: 1, nom: "Dessert" },
-      { id: 2, nom: "Entrée" },
-      { id: 3, nom: "Plat" },
-    ],
+    categories: [],
     currentCategorie: null,
     categorieForm: reactive({
       nom: null,
     }),
   }),
   actions: {
-    resetForm() {
-      this.categorieForm.nom = null;
-    },
-    getCategorieById(id) {
-      return this.categories.find((cat) => cat.id == id);
-    },
-    addCategorie(newCategorie) {
-      const nom = newCategorie.nom?.trim();
-      
-      if (!nom) {
-        console.warn("Le nom de la catégorie ne peut pas être vide.");
-        return;
+    async loadDataFromApi() {
+      try {
+        const resp = await axios.get("http://localhost:3020/categories");
+        this.categories = resp.data;
+      } catch (error) {
+        this.categories = [];
       }
-
-      const categorieExiste = this.categories.some(
-        (cat) => cat.nom.toLowerCase() === nom.toLowerCase()
+    },
+    async store(categorie) {
+      return await axios.post("http://localhost:3020/categories", categorie);
+    },
+    async update(id, categorie) {
+      return await axios.put(
+        `http://localhost:3020/categories/${id}`,
+        categorie
       );
-      if (categorieExiste) {
-        console.warn("Cette catégorie existe déjà.");
-        return;
-      }
-
-      const maxId = this.categories.length
-        ? Math.max(...this.categories.map((cat) => cat.id))
-        : 0;
-
-      const newCategorieObject = {
-        id: maxId + 1,
-        nom: nom,
-      };
-
-      this.categories.push(newCategorieObject);
-      this.resetForm();
     },
-    editCategorie(id, updatedCategorie) {
-      const index = this.categories.findIndex((cat) => cat.id == id);
-      if (index !== -1) {
-        this.categories[index] = {
-          ...this.categories[index],
-          ...updatedCategorie,
-        };
-      }
+    async destroy(id) {
+      await axios.delete(`http://localhost:3020/categories/${id}`);
+      await this.loadDataFromApi();
     },
-    deleteCategorie(id) {
-      this.categories = this.categories.filter((cat) => cat.id !== id);
+    async getById(id) {
+      await axios.get(`http://localhost:3020/categories/${id}`);
+      await this.loadDataFromApi();
+    },
+    async recipes(id) {
+      await axios.get(`http://localhost:3020/categories/recipes/${id}`);
+      await this.loadDataFromApi();
     },
   },
 });

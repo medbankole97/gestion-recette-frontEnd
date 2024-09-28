@@ -1,13 +1,9 @@
 <template>
   <div class="container-fluid">
-    <nav class="navbar bg-white px-5">
+    <nav class="navbar bg-white">
     <router-link to="/">
       <img src="/src/assets/logo.png" alt="Logo" class="logo">
     </router-link>
-    <!-- <form class="d-flex justify-content-around px-5">
-      <router-link to="/recette/patisserie" class="btn btn-outline-none me-3">{{ $t("recette.list.nav") }}</router-link>
-      <router-link to="/recette/cuisine" class="btn btn-outline-none">{{ $t("recette.list.nav2") }}</router-link>
-    </form> -->
     <div>
       <select id="langue" @change="changeLanguage">
         <option value="en">En</option>
@@ -30,16 +26,14 @@ import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 
 function changeLanguage(event) {
-  locale.value = event.target.value;}
-
-
+  locale.value = event.target.value
+}
 </script>
 
 <style scoped>
 .container-fluid {
   background-color: beige;
 }
-
 .logo {
   width: 60px;
 }
