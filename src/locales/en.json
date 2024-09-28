@@ -8,7 +8,8 @@
         "col1": "Title",
         "col2": "Ingredients",
         "col3": "Type",
-        "col4": "Action",
+        "col4": "Category",
+        "col5": "Action",
         "data": "No data"
       },
       "create": {
@@ -21,6 +22,7 @@
           "select2": "Flat Starter",
           "select3": "Dish"
         },
+        "row4": "Category",
         "boutton": "Send"
       },
       "edit": {
@@ -48,7 +50,8 @@
       "titre": "List of Categories",
       "col1": "Category Name",
       "col2": "Action",
-      "data": "No data"
+      "data": "No data",
+      "boutton": "New Category"
     },
     "create": {
       "titre": "Add a New Category",

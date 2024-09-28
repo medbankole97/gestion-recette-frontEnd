@@ -8,7 +8,8 @@
         "col1": "Titre",
         "col2": "Ingrédients",
         "col3": "Type",
-        "col4": "Action",
+        "col4": "Catégorie",
+        "col5": "Action",
         "data": "Pas de données"
       },
       "create": {
@@ -21,6 +22,7 @@
           "select2": "Entrée",
           "select3": "Plat"
         },
+        "row4": "Catégorie",
         "boutton": "Envoyer"
       },
       "edit": {
@@ -44,17 +46,17 @@
       }
     },
     "categorie": {
+      "list": {
+      "titre": "Liste des Catégories",
+      "col1": "Nom",
+      "col2": "Action",
+      "data": "Pas de données",
+      "boutton": "Nouvelle Catégorie"
+    },
     "create": {
       "titre": "Ajouter une Nouvelle Catégorie",
       "name": "Nom de la Catégorie",
       "boutton": "Envoyer"
-    },
-    "list": {
-      "titre": "Liste des Catégories",
-      "col1": "Nom",
-      "col2": "Action",
-      "edit": "Modifier",
-      "delete": "Supprimer"
     },
     "edit": {
       "titre": "Modifier la Catégorie",
