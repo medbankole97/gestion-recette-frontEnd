@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid p-5">
+  <div class="container">
     <div class="menu d-flex justify-content-center mb-4">
       <router-link to="/recette" class="btn btn-lg me-3">Recettes</router-link>
       <router-link to="/categorie" class="btn btn-lg">Catégories</router-link>
@@ -17,7 +17,7 @@
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Protest+Guerrilla&display=swap');
 
-.container-fluid {
+.container {
   background-image: url('../assets/back.jpg');
   height: 100vh;
   background-size: cover;
