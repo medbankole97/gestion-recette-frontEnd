@@ -85,9 +85,13 @@ const destroy = (id) => {
   }
 }
 
+<<<<<<< HEAD
 onMounted(() => {
   store.loadDataFromApi();
 });
+=======
+
+>>>>>>> 10f2cf66457296d7816da319f6e97514aeab736a
 </script>
 
 <style scoped>

@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+
+  <div class="container-fluid">
     <h2>{{ $t("recette.list.titre") }}</h2>
     <div class="d-flex justify-content-end mb-4 ">
       <router-link to="/recette/new" class="btn btn-danger "><i class="fa-solid fa-plus"></i> {{ $t("recette.list.boutton") }}</router-link>
@@ -12,6 +13,7 @@
           <th scope="col">{{ $t("recette.list.col1") }}</th>
           <th scope="col">{{ $t("recette.list.col2") }}</th>
           <th scope="col">{{ $t("recette.list.col3") }}</th>
+          <th scope="col">{{ $t("recette.list.col5") }}</th>
           <th scope="col">{{ $t("recette.list.col4") }}</th>
           <th scope="col">{{ $t("recette.list.col5") }}</th>
           </tr>
@@ -54,6 +56,7 @@
               <p><span class="fw-bold">{{ $t("recette.show.row1") }} :</span> {{ current?.titre }}</p>
               <p><span class="fw-bold">{{ $t("recette.show.row2") }} : </span>{{ current?.ingredients }}</p>
               <p><span class="fw-bold">{{ $t("recette.show.row3") }} : </span>{{ current?.type }}</p>
+              <p><span class="fw-bold">{{ $t("recette.show.row4") }} : </span>{{ current?.categorie }}</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-warning" data-bs-dismiss="modal">{{ $t("recette.show.boutton") }}</button>
@@ -94,9 +97,19 @@ const view = (recette) => {
   current.value = recette
 }
 
+<<<<<<< HEAD
 onMounted(() => {
   store.loadDataFromApi();
 });
+=======
+
+const { locale } = useI18n();
+
+function changeLanguage(event)  {
+  locale.value = event.target.value;
+}
+
+>>>>>>> 10f2cf66457296d7816da319f6e97514aeab736a
 </script>
 
 <style scoped>
