@@ -23,6 +23,7 @@ export const useRecetteStore = defineStore("recetteStore", {
       ingredients: null,
       type: null,
     }),
+    searchResults: [], // Ajouter cette ligne
   }),
   actions: {
     resetForm() {
@@ -31,8 +32,8 @@ export const useRecetteStore = defineStore("recetteStore", {
       this.recetteForm.type = null;
     },
     getRecipeById(id) {
-      const result = this.recettes.find(r => r.id == id)
-      return result
+      const result = this.recettes.find(r => r.id == id);
+      return result;
     },
     edit(id, newRecette) {
       const index = this.recettes.findIndex((f) => f.id == id);
@@ -64,7 +65,12 @@ export const useRecetteStore = defineStore("recetteStore", {
         id: newId,
       };
       this.recettes.push(recette);
-      this.resetForm()
-    }
+      this.resetForm();
+    },
+    searchRecettes(query) {
+      this.searchResults = this.recettes.filter(recette =>
+        recette.titre.toLowerCase().includes(query.toLowerCase())
+      );
+    },
   },
 });

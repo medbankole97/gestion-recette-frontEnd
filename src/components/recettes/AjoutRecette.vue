@@ -82,7 +82,7 @@ const onSubmit = () => {
 }
 
 .hight {
-  background-image: url('/src/assets/cuisine/kebab.jpg');
+  background-image: url('/src/assets/cuisine/boulette.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;

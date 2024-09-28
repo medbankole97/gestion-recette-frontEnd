@@ -49,6 +49,7 @@
       "titre": "List of Categories",
       "col1": "Category Name",
       "col2": "Action",
+      "list": "New Category",
       "data": "No data"
     },
     "create": {
