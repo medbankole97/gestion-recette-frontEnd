@@ -13,9 +13,8 @@
           <th scope="col">{{ $t("recette.list.col1") }}</th>
           <th scope="col">{{ $t("recette.list.col2") }}</th>
           <th scope="col">{{ $t("recette.list.col3") }}</th>
-          <th scope="col">{{ $t("recette.list.col5") }}</th>
           <th scope="col">{{ $t("recette.list.col4") }}</th>
-          <th scope="col">{{ $t("recette.list.col5") }}</th>
+          <th scope="col" class="text-center">{{ $t("recette.list.col5") }}</th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +27,7 @@
             <td>{{ item.ingredients }}</td>
             <td>{{ item.type }}</td>
             <td>{{ item.nom }}</td>
-            <td>
+            <td class="text-center">
               <button class="btn btn-xs btn-danger" @click="destroy(item.id)">
                 <i class="fa-solid fa-trash"></i>
               </button>
@@ -97,11 +96,9 @@ const view = (recette) => {
   current.value = recette
 }
 
-<<<<<<< HEAD
 onMounted(() => {
   store.loadDataFromApi();
 });
-=======
 
 const { locale } = useI18n();
 
@@ -109,7 +106,6 @@ function changeLanguage(event)  {
   locale.value = event.target.value;
 }
 
->>>>>>> 10f2cf66457296d7816da319f6e97514aeab736a
 </script>
 
 <style scoped>

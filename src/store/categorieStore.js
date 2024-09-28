@@ -13,31 +13,31 @@ export const useCategorieStore = defineStore("categorieStore", {
   actions: {
     async loadDataFromApi() {
       try {
-        const resp = await axios.get("http://localhost:3020/categories");
+        const resp = await axios.get("http://localhost:3022/categories");
         this.categories = resp.data;
       } catch (error) {
         this.categories = [];
       }
     },
     async store(categorie) {
-      return await axios.post("http://localhost:3020/categories", categorie);
+      return await axios.post("http://localhost:3022/categories", categorie);
     },
     async update(id, categorie) {
       return await axios.put(
-        `http://localhost:3020/categories/${id}`,
+        `http://localhost:3022/categories/${id}`,
         categorie
       );
     },
     async destroy(id) {
-      await axios.delete(`http://localhost:3020/categories/${id}`);
+      await axios.delete(`http://localhost:3022/categories/${id}`);
       await this.loadDataFromApi();
     },
     async getById(id) {
-      await axios.get(`http://localhost:3020/categories/${id}`);
+      await axios.get(`http://localhost:3022/categories/${id}`);
       await this.loadDataFromApi();
     },
     async recipes(id) {
-      await axios.get(`http://localhost:3020/categories/recipes/${id}`);
+      await axios.get(`http://localhost:3022/categories/recipes/${id}`);
       await this.loadDataFromApi();
     },
   },

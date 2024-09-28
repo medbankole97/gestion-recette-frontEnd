@@ -1,9 +1,9 @@
 <template>
-<div class="welcome-message text-center my-5">
-      <h2>Bienvenue sur Waañu Bideew</h2>
-      <p>Découvrez et partagez les meilleures recettes du monde entier !</p>
+<div class="welcome-message text-center my-2">
+      <h2>Waañu Waalo</h2>
+      <p>{{ $t("home.accroche") }}</p>
     </div>
-  <div class="container-fluid p-5">
+  <div class="container-fluid px-5">
     <div id="carouselExampleIndicators" class="carousel slide mb-5" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -23,22 +23,20 @@
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="visually-hidden">{{ $t("home.btn1") }}</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="visually-hidden">{{ $t("home.btn2") }}</span>
       </button>
     </div>
-
-<!--    
-    <div class="title d-flex justify-content-end align-items-end">
-      <router-link to="/recette" class="btn btn-lg">Bismillah</router-link>
-    </div> -->
   </div>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n';
+
+const t = useI18n();
 </script>
 
 <style scoped>

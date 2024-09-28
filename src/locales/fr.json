@@ -1,4 +1,12 @@
 {
+  "home": 
+    {
+      "title1": "Recettes",
+      "title2": "Catégories",
+      "accroche": "Découvrez et partagez les meilleures recettes du monde entier !",
+      "btn1": "Précédent",
+      "btn2": "Suivant"
+    },
     "recette": {
       "list": {
         "nav": "Patisserie",

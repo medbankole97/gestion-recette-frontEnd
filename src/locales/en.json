@@ -1,69 +1,86 @@
 {
-    "recette": {
-      "list": {
-        "nav": "Pastry",
-        "nav2": "Kitchen",
-        "titre": "List of Recipes",
-        "boutton": "New Recipe",
-        "col1": "Title",
-        "col2": "Ingredients",
-        "col3": "Type",
-        "col4": "Category",
-        "col5": "Action",
-        "data": "No data"
-      },
-      "create": {
-        "titre": "Add a New Recipe",
-        "row1": "Title",
-        "row2": "Ingredients",
-        "row3": {
-          "title": "Type",
-          "select1": "Dessert",
-          "select2": "Flat Starter",
-          "select3": "Dish"
+    "home": 
+    {
+      "title1": "Recipes",
+      "title2": "Categories",
+      "accroche": "Discover and share the best recipes from around the world!",
+      "btn1": "Previous",
+      "btn2": "Next"
+    },
+    "recette": 
+    {
+        "list": 
+        {
+            "nav": "Pastry",
+            "nav2": "Kitchen",
+            "titre": "List of Recipes",
+            "boutton": "New Recipe",
+            "col1": "Title",
+            "col2": "Ingredients",
+            "col3": "Type",
+            "col4": "Category",
+            "col5": "Action",
+            "data": "No data"
         },
-        "row4": "Category",
-        "boutton": "Send"
-      },
-      "edit": {
-        "titre": "Edit the Recipe",
-        "row1": "Title",
-        "row2": "Ingredients",
-        "row3": {
-          "title": "Type",
-          "select1": "Dessert",
-          "select2": "Flat Starter",
-          "select3": "Dish"
+        "create": 
+        {
+            "titre": "Add a New Recipe",
+            "row1": "Title",
+            "row2": "Ingredients",
+            "row3": 
+            {
+                "title": "Type",
+                "select1": "Dessert",
+                "select2": "Flat Starter",
+                "select3": "Dish"
+            },
+            "row4": "Category",
+            "boutton": "Send"
         },
-        "boutton": "Save"
-      },
-      "show": {
-        "titre": "Recipe Details",
-        "row1": "Title",
-        "row2": "Ingredients",
-        "row3": "Type",
-        "boutton": "Close"
-      }
+        "edit": 
+        {
+            "titre": "Edit the Recipe",
+            "row1": "Title",
+            "row2": "Ingredients",
+            "row3": 
+            {
+                "title": "Type",
+                "select1": "Dessert",
+                "select2": "Flat Starter",
+                "select3": "Dish"
+            },
+            "boutton": "Save"
+        },
+        "show": 
+        {
+            "titre": "Recipe Details",
+            "row1": "Title",
+            "row2": "Ingredients",
+            "row3": "Type",
+            "boutton": "Close"
+        }
     },
-    "categorie": {
-    "list": {
-      "titre": "List of Categories",
-      "col1": "Category Name",
-      "col2": "Action",
-      "data": "No data",
-      "boutton": "New Category"
-    },
-    "create": {
-      "titre": "Add a New Category",
-      "name": "Category Name",
-      "boutton": "Send"
-    },
-    "edit": {
-      "titre": "Edit the Category",
-      "name": "Category Name",
-      "boutton": "Save"
+    "categorie": 
+    {
+        "list": 
+        {
+            "titre": "List of Categories",
+            "col1": "Category Name",
+            "col2": "Action",
+            "data": "No data",
+            "boutton": "New Category"
+        },
+        "create": 
+        {
+            "titre": "Add a New Category",
+            "name": "Category Name",
+            "boutton": "Send"
+        },
+        "edit": 
+        {
+            "titre": "Edit the Category",
+            "name": "Category Name",
+            "boutton": "Save"
+        }
     }
-  }
 }
-  
-  

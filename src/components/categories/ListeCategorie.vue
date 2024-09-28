@@ -12,7 +12,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">{{ $t("categorie.list.col1") }}</th>
-            <th scope="col">Actions</th>
+            <th scope="col" class="text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
           <tr v-for="(categorie, index) in store.categories" :key="categorie.id">
             <td scope="row">{{ index + 1 }}</td>
             <td>{{ categorie.nom }}</td>
-            <td>
+            <td class="text-center">
               <button @click="view(categorie)" class="btn btn-xs btn-info me-4" data-bs-toggle="modal"
                 data-bs-target="#categoryModal">
                 <i class="fa-solid fa-eye"></i>
@@ -85,13 +85,9 @@ const destroy = (id) => {
   }
 }
 
-<<<<<<< HEAD
 onMounted(() => {
   store.loadDataFromApi();
 });
-=======
-
->>>>>>> 10f2cf66457296d7816da319f6e97514aeab736a
 </script>
 
 <style scoped>
