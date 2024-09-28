@@ -4,9 +4,9 @@ import { reactive } from "vue";
 export const useCategorieStore = defineStore("categorieStore", {
   state: () => ({
     categories: [
-      { id: 1, nom: "Dessert" },
-      { id: 2, nom: "Entrée" },
-      { id: 3, nom: "Plat" },
+      // { id: 1, nom: "Dessert" },
+      // { id: 2, nom: "Entrée" },
+      // { id: 3, nom: "Plat" },
     ],
     currentCategorie: null,
     categorieForm: reactive({

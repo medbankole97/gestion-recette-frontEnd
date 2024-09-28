@@ -8,6 +8,7 @@
         "col1": "Title",
         "col2": "Ingredients",
         "col3": "Type",
+        "col5": "Category",
         "col4": "Action",
         "data": "No data"
       },

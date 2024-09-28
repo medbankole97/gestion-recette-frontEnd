@@ -1,19 +1,5 @@
 <template>
-  <!-- <nav class="navbar bg-white px-5">
-    <router-link to="/">
-      <img src="/src/assets/logo.png" alt="Logo" class="logo">
-    </router-link>
-    <form class="d-flex justify-content-around px-5">
-      <router-link to="/recette/patisserie" class="btn btn-outline-none me-3">{{ $t("recette.list.nav") }}</router-link>
-      <router-link to="/recette/cuisine" class="btn btn-outline-none">{{ $t("recette.list.nav2") }}</router-link>
-    </form>
-    <div>
-      <select id="langue" @change="changeLanguage">
-        <option value="en">En</option>
-        <option value="fr">Fr</option>
-      </select>
-    </div>
-  </nav> -->
+
   <div class="container-fluid">
     <h2>{{ $t("recette.list.titre") }}</h2>
     <div class="d-flex justify-content-end mb-4 ">
@@ -27,6 +13,7 @@
           <th scope="col">{{ $t("recette.list.col1") }}</th>
           <th scope="col">{{ $t("recette.list.col2") }}</th>
           <th scope="col">{{ $t("recette.list.col3") }}</th>
+          <th scope="col">{{ $t("recette.list.col5") }}</th>
           <th scope="col">{{ $t("recette.list.col4") }}</th>
           </tr>
         </thead>
@@ -39,6 +26,7 @@
             <td>{{ item.titre }}</td>
             <td>{{ item.ingredients }}</td>
             <td>{{ item.type }}</td>
+            <td>{{ item.categorie }}</td>
             <td>
               <button class="btn btn-xs btn-danger me-4" @click="destroy(item.id)">
                 <i class="fa-solid fa-trash"></i>
@@ -67,6 +55,7 @@
               <p><span class="fw-bold">{{ $t("recette.show.row1") }} :</span> {{ current?.titre }}</p>
               <p><span class="fw-bold">{{ $t("recette.show.row2") }} : </span>{{ current?.ingredients }}</p>
               <p><span class="fw-bold">{{ $t("recette.show.row3") }} : </span>{{ current?.type }}</p>
+              <p><span class="fw-bold">{{ $t("recette.show.row4") }} : </span>{{ current?.categorie }}</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-warning" data-bs-dismiss="modal">{{ $t("recette.show.boutton") }}</button>
@@ -91,17 +80,17 @@ const store = useRecetteStore()
 const router = useRouter()
 
 const destroy = (id) => {
-  store.destroy(id)
-}
+  if (confirm("Êtes-vous sûr de vouloir supprimer cette catégorie ?")) {
+    store.destroy(id);
+  }
+};
 
 const current = ref(null)
 const view = (recette) => {
   current.value = recette
 }
 
-// const change() {
-  
-// }
+
 const { locale } = useI18n();
 
 function changeLanguage(event)  {

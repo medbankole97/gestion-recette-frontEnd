@@ -4,18 +4,18 @@ import { reactive } from "vue";
 export const useRecetteStore = defineStore("recetteStore", {
   state: () => ({
     recettes: [
-      {
-        id: 1,
-        titre: "Crêpe Nutella",
-        ingredients: "Farine, lait, oeuf, beurre, sucre",
-        type: "Dessert",
-      },
-      {
-        id: 2,
-        titre: "Lasagne",
-        ingredients: "Viande, tomate, feuille de lasagnes, béchamel",
-        type: "Plat",
-      },
+      // {
+      //   id: 1,
+      //   titre: "Crêpe Nutella",
+      //   ingredients: "Farine, lait, oeuf, beurre, sucre",
+      //   type: "Dessert",
+      // },
+      // {
+      //   id: 2,
+      //   titre: "Lasagne",
+      //   ingredients: "Viande, tomate, feuille de lasagnes, béchamel",
+      //   type: "Plat",
+      // },
     ],
     currentRecette: null,
     recetteForm: reactive({
