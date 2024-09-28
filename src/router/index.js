@@ -1,17 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Home from '../components/Home.vue';
-import Ajout from '../components/recettes/AjoutRecette.vue';
-import Modifie from '../components/recettes/ModifieRecette.vue';
-import Liste from '../components/recettes/ListeRecette.vue';
-
-// import Patisserie from '../views/Patisserie.vue';
-// import Cuisine from '../views/Cuisine.vue';
+import Home from '@/components/Home.vue';
+import Ajout from '@/components/recettes/AjoutRecette.vue';
+import Modifie from '@/components/recettes/ModifieRecette.vue';
+import Liste from '@/components/recettes/ListeRecette.vue';
+import DetailRecette from "@/components/recettes/DetailRecette.vue";
 
 
-import AjoutCategorie from '../components/categories/AjoutCategorie.vue';
-import ListeCategorie from '../components/categories/ListeCategorie.vue';
-import ModifieCategorie from '../components/categories/ModifieCategorie.vue';
+import AjoutCategorie from '@/components/categories/AjoutCategorie.vue';
+import ListeCategorie from '@/components/categories/ListeCategorie.vue';
+import ModifieCategorie from '@/components/categories/ModifieCategorie.vue';
+import DetailCategorie from "@/components/categories/DetailCategorie.vue";
 
 const routes = [
     {
@@ -36,20 +35,14 @@ const routes = [
                 path: "edit/:id",
                 name: 'modifier-recette',
                 component: Modifie,
+            },
+            {
+                path: "show/:id",
+                name: 'detail-recette',
+                component: DetailRecette,
             }
-            // {
-            //     path: "patisserie",
-            //     name: 'patisserie',
-            //     component: Patisserie,
-            // },
-            // {
-            //     path: "cuisine",
-            //     name: 'cuisine',
-            //     component: Cuisine,
-            // },
         ]
     },
-    // Ajout des routes pour les catégories
     {
         path: "/categorie",
         children: [
@@ -67,6 +60,11 @@ const routes = [
                 path: "edit/:id",
                 name: 'modifier-categorie',
                 component: ModifieCategorie,
+            },
+            {
+                path: "show/:id",
+                name: 'detail-categorie',
+                component: DetailCategorie,
             }
         ]
     }

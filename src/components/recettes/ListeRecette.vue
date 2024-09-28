@@ -13,8 +13,8 @@
           <th scope="col">{{ $t("recette.list.col1") }}</th>
           <th scope="col">{{ $t("recette.list.col2") }}</th>
           <th scope="col">{{ $t("recette.list.col3") }}</th>
-          <th scope="col">{{ $t("recette.list.col5") }}</th>
           <th scope="col">{{ $t("recette.list.col4") }}</th>
+          <th scope="col" class="text-center">{{ $t("recette.list.col5") }}</th>
           </tr>
         </thead>
         <tbody>
@@ -26,12 +26,12 @@
             <td>{{ item.titre }}</td>
             <td>{{ item.ingredients }}</td>
             <td>{{ item.type }}</td>
-            <td>{{ item.categorie }}</td>
-            <td>
-              <button class="btn btn-xs btn-danger me-4" @click="destroy(item.id)">
+            <td>{{ item.nom }}</td>
+            <td class="text-center">
+              <button class="btn btn-xs btn-danger" @click="destroy(item.id)">
                 <i class="fa-solid fa-trash"></i>
               </button>
-              <router-link :to="`/recette/edit/${item.id}`" class="btn btn-xs btn-primary me-4">
+              <router-link :to="`/recette/edit/${item.id}`" class="btn btn-xs btn-primary">
                 <i class="fa-solid fa-pen-to-square"></i>
               </router-link>
               <button class="btn btn-xs btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -43,7 +43,7 @@
         </tbody>
       </table>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -62,7 +62,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
   </div>
@@ -70,9 +70,9 @@
 
 <script setup>
 import { useRecetteStore } from '@store'
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { I18nD, useI18n } from 'vue-i18n';
+import { useI18n } from 'vue-i18n';
 
 const t = useI18n()
 
@@ -80,16 +80,25 @@ const store = useRecetteStore()
 const router = useRouter()
 
 const destroy = (id) => {
-  if (confirm("Êtes-vous sûr de vouloir supprimer cette catégorie ?")) {
-    store.destroy(id);
+  try {
+    const verify = window.confirm("Etes vous sûr de vouloir supprimer cette recette")
+    if(verify) {
+      store.destroy(id)
+    }
+  } catch (error) {
+    console.log(error.message);
+    
   }
-};
+}
 
 const current = ref(null)
 const view = (recette) => {
   current.value = recette
 }
 
+onMounted(() => {
+  store.loadDataFromApi();
+});
 
 const { locale } = useI18n();
 
@@ -103,7 +112,6 @@ function changeLanguage(event)  {
 .logo {
   width: 60px;
 }
-
 .container-fluid {
   padding: 10px 10em;
 }

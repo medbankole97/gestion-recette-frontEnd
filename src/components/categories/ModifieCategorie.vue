@@ -1,12 +1,11 @@
 <template>
   <div class="container">
     <h3>Modifier la catégorie</h3>
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent="onEdit">
       <div class="mb-3">
         <label for="nomCategorie" class="form-label">Nom de la catégorie</label>
-        <input type="text" class="form-control" id="nomCategorie" v-model="nomCategorie" required>
+        <input type="text" class="form-control" id="nomCategorie" v-model="form.nom" required>
       </div>
-      <!-- <button type="submit" class="btn btn-success">Enregistrer</button> -->
       <div class="d-flex justify-content-between">
             <router-link to="/categorie" class="btn btn-success"><i class="fa-solid fa-arrow-left"></i></router-link>
             <button class="btn btn-success">{{ $t("recette.edit.boutton") }}</button>
@@ -16,26 +15,30 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { useCategorieStore } from '@store';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const store = useCategorieStore();
 const route = useRoute();
-const nomCategorie = ref('');
+const router = useRouter();
+const form = store.categorieForm
 
-onMounted(() => {
-  const categorie = store.getCategorieById(route.params.id);
-  if (categorie) {
-    nomCategorie.value = categorie.nom;
-  }
-});
-
-const onSubmit = () => {
-  if (nomCategorie.value.trim() !== '') {
-    store.editCategorie(route.params.id, { nom: nomCategorie.value.trim() });
+const idCategorie = route.params.id
+const onEdit = async () => {
+  try {
+    store.update(idCategorie, {
+      nom: form.nom
+    })
+    router.push('/categorie')
+  } catch (error) {
+    console.log(error.message);
   }
 };
+
+onMounted(() => {
+  store.loadDataFromApi()
+});
 </script>
 
 <style scoped>

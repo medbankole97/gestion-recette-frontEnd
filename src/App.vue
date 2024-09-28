@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link to="/recette" class="nav-link text-white">Recettes</router-link>
+              <router-link to="/recette" class="nav-link text-white">{{ $t("home.title1") }}</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/categorie" class="nav-link text-white">Catégories</router-link>
+              <router-link to="/categorie" class="nav-link text-white">{{ $t("home.title2") }}</router-link>
             </li>
           </ul>
         </div>
@@ -61,7 +61,7 @@
 import { ref } from 'vue';
 import { useRecetteStore } from './store/recetteStore';
 import { useI18n } from 'vue-i18n';
-
+const t = useI18n();
 const { locale } = useI18n();
 const searchQuery = ref('');
 const recetteStore = useRecetteStore();
