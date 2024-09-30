@@ -65,10 +65,10 @@ const form = ref({
 const onEdit = async () => {
   try {
     await store.update(idRecette, {
-      titre: form.titre,
-      ingredients: form.ingredients,
-      type: form.type,
-      categorie_id: form.categorie
+      titre: form.value.titre,
+      ingredients: form.value.ingredients,
+      type: form.value.type,
+      categorie_id: form.value.id_cat
     })
     await store.resetForm()
     router.push('/recette')

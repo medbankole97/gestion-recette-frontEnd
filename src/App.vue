@@ -51,7 +51,6 @@ import { useRecetteStore } from './store/recetteStore';
 import { useI18n } from 'vue-i18n';
 const t = useI18n();
 const { locale } = useI18n();
-const searchQuery = ref('');
 const recetteStore = useRecetteStore();
 const noResults = ref(false);
 
@@ -59,10 +58,6 @@ function changeLanguage(event) {
   locale.value = event.target.value;
 }
 
-// function searchRecipe() {
-//   recetteStore.searchRecettes(searchQuery.value);
-//   noResults.value = recetteStore.searchResults.length === 0;
-// }
 </script>
 
 <style scoped>
