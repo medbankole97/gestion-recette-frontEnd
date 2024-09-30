@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 col-md-8 col-lg-6 m-auto">
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-md-6">
         <h3 class="text-center">{{ $t("recette.create.titre") }}</h3>
         <form class="me-auto" @submit.prevent="onSubmit">
           <div class="mb-3">
@@ -28,8 +28,6 @@
               </option>
             </select>
           </div>
-
-          <!-- Boutons -->
           <div class="d-flex justify-content-between">
             <router-link to="/recette" class="btn btn-success">
               <i class="fa-solid fa-arrow-left"></i>
@@ -38,9 +36,7 @@
           </div>
         </form>
       </div>
-
-      <!-- Image de droite cachée sur les petits écrans -->
-      <div class="col-md-5 d-none d-md-block hight"></div>
+      <div class="col-md-6 hight"></div>
     </div>
   </div>
 </template>
@@ -80,14 +76,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.container-fluid {
-  padding: 15px;
-}
-
 .hight {
   background-image: url('/src/assets/cuisine/boulette.jpg');
   background-size: cover;
-  background-position: center;
-  height: 100vh;
+  height: 70vh;
+  border-radius: 7px;
 }
 </style>

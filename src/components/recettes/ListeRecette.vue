@@ -6,11 +6,9 @@
       <input 
         type="text" 
         class="form-control w-50"
-        placeholder="Rechercher une recette"
-        v-model="searchQuery" 
-        @input="filterRecettes"
+        :placeholder= "$t('recette.list.holder')"
+        v-model="searchQuery"
       />
-      
       <router-link to="/recette/new" class="btn btn-danger">
         <i class="fa-solid fa-plus"></i> {{ $t("recette.list.boutton") }}
       </router-link>

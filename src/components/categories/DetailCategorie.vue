@@ -1,14 +1,11 @@
 <template>
   <div class="container-fluid">
-    <h2>{{ $t("categorie.detail.titre") }}</h2>
+    <h2>{{ $t("categorie.show.titre") }}</h2>
     <div v-if="categorie">
-      <p><strong>{{ $t("categorie.detail.nom") }}:</strong> {{ categorie.nom }}</p>
-    </div>
-    <div v-else>
-      <p>{{ $t("categorie.detail.noData") }}</p>
+      <p><strong>{{ $t("categorie.show.nom") }}:</strong> {{ categorie.nom }}</p>
     </div>
     <router-link to="/categorie" class="btn btn-secondary">
-      {{ $t("categorie.detail.retour") }}
+      {{ $t("categorie.show.boutton") }}
     </router-link>
   </div>
 </template>

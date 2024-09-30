@@ -23,11 +23,7 @@
             <td scope="row">{{ index + 1 }}</td>
             <td>{{ categorie.nom }}</td>
             <td class="text-center">
-              <!-- <button @click="view(categorie)" class="btn btn-xs btn-info me-4" data-bs-toggle="modal"
-                data-bs-target="#categoryModal">
-                <i class="fa-solid fa-eye"></i>
-              </button> -->
-              <router-link :to="`/categorie/show/${categorie.id}`" class="btn btn-xs btn-info me-4">
+              <router-link :to="`/categorie/show/${categorie.id}`" class="btn btn-xs btn-success me-4">
                 <i class="fa-solid fa-eye"></i>
               </router-link>
               <router-link :to="`/categorie/edit/${categorie.id}`" class="btn btn-xs btn-primary me-4">

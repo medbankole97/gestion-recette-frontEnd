@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-7 m-auto">
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-md-6">
         <h3 class="text-center">{{ $t("recette.edit.titre") }}</h3>
         <form class="me-auto" @submit.prevent="onEdit">
           <div class="mb-3">
@@ -36,13 +36,9 @@
           </div>
         </form>
       </div>
-      <div class="col-md-5 hight"></div>
+      <div class="col-md-6 hight"></div>
     </div>
-
-
   </div>
-
-
 </template>
 
 <script setup>
@@ -65,10 +61,6 @@ const form = ref({
   type: "",
   id_cat: 0
 });
-// const titre = ref("")
-// const ingredients = ref("")
-// const type = ref("")
-// const categorie = ref(0)
 
 const onEdit = async () => {
   try {
@@ -77,10 +69,6 @@ const onEdit = async () => {
       ingredients: form.ingredients,
       type: form.type,
       categorie_id: form.categorie
-      // titre: titre.value,
-      // ingredients: ingredients.value,
-      // type: type.value,
-      // categorie_id: categorie.value
     })
     await store.resetForm()
     router.push('/recette')
@@ -93,25 +81,18 @@ onMounted(async () => {
   storeC.loadDataFromApi();
   const recette = await store.getById(idRecette)
   form.value = recette
-  // titre.value = recette.titre
-  // ingredients.value = recette.ingredients
-  // type.value = recette.type
-  // categorie.value = recette.id_cat
 });
 </script>
 
 <style scoped>
-.container-fluid {
-  height: 100vh;
-}
-
 .row {
   height: 100vh;
 }
 
 .hight {
-  background-image: url('/src/assets/patisserie/beignet.jpg');
-  background-repeat: no-repeat;
+  background-image: url('/src/assets/patisserie/gauffre.jpg');
   background-size: cover;
+  height: 70vh;
+  border-radius: 7px;
 }
 </style>

@@ -1,17 +1,14 @@
 <template>
   <div class="container-fluid">
-    <h2>{{ $t("recette.detail.titre") }}</h2>
+    <h2>{{ $t("recette.show.titre") }}</h2>
     <div v-if="recette">
-      <p><strong>{{ $t("recette.detail.row1") }}:</strong> {{ recette.titre }}</p>
-      <p><strong>{{ $t("recette.detail.row2") }}:</strong> {{ recette.ingredients }}</p>
-      <p><strong>{{ $t("recette.detail.row3") }}:</strong> {{ recette.type }}</p>
-      <p><strong>{{ $t("recette.detail.row4") }}:</strong> {{ recette.nom }}</p> <!-- Catégorie -->
-    </div>
-    <div v-else>
-      <p>{{ $t("recette.detail.noData") }}</p>
+      <p><strong>{{ $t("recette.show.row1") }}:</strong> {{ recette.titre }}</p>
+      <p><strong>{{ $t("recette.show.row2") }}:</strong> {{ recette.ingredients }}</p>
+      <p><strong>{{ $t("recette.show.row3") }}:</strong> {{ recette.type }}</p>
+      <p><strong>{{ $t("recette.show.row4") }}:</strong> {{ recette.nom }}</p>
     </div>
     <router-link to="/recette" class="btn btn-secondary">
-      {{ $t("recette.detail.retour") }}
+      {{ $t("recette.show.boutton") }}
     </router-link>
   </div>
 </template>
@@ -29,7 +26,6 @@ const recette = ref(null);
 
 onMounted(async () => {
   const id = route.params.id;
-  // Appel pour charger la recette avec son id
   recette.value = await store.getById(id);
 });
 </script>

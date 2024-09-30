@@ -1,19 +1,18 @@
 {
     "home": 
     {
-      "title1": "Recipes",
-      "title2": "Categories",
-      "accroche": "Discover and share the best recipes from around the world!",
-      "btn1": "Previous",
-      "btn2": "Next"
+        "title1": "Recipes",
+        "title2": "Categories",
+        "accroche": "Discover and share the best recipes from around the world!",
+        "btn1": "Previous",
+        "btn2": "Next"
     },
     "recette": 
     {
         "list": 
         {
-            "nav": "Pastry",
-            "nav2": "Kitchen",
             "titre": "List of Recipes",
+            "holder": "Search a recipe",
             "boutton": "New Recipe",
             "col1": "Title",
             "col2": "Ingredients",
@@ -57,7 +56,8 @@
             "row1": "Title",
             "row2": "Ingredients",
             "row3": "Type",
-            "boutton": "Close"
+            "row4": "Category",
+            "boutton": "Return"
         }
     },
     "categorie": 
@@ -65,7 +65,7 @@
         "list": 
         {
             "titre": "List of Categories",
-            "col1": "Category Name",
+            "col1": "Name",
             "col2": "Action",
             "data": "No data",
             "boutton": "New Category"
@@ -73,21 +73,20 @@
         "create": 
         {
             "titre": "Add a New Category",
-            "name": "Category Name",
+            "name": "Name",
             "boutton": "Send"
         },
         "edit": 
         {
             "titre": "Edit the Category",
-            "name": "Category Name",
+            "name": "Name",
             "boutton": "Save"
         },
-        "detail": {
+        "show": 
+        {
             "titre": "Category Details",
-            "row1": "Nom de la recette",
-            "row2": "Ingredients",
-            "row3":"Type de recette",
-            "row4":"Category de recette"
-    }
+            "nom": "Name",
+            "boutton": "Return"
+        }
     }
 }
