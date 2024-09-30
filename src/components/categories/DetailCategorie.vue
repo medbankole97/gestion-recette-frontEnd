@@ -1,43 +1,42 @@
 <template>
-  <div class="container">
-    <h3>{{ $t("categorie.create.titre") }}</h3>
-    <form @submit.prevent="onSubmit">
-      <div class="mb-3">
-        <label for="nomCategorie" class="form-label">{{ $t("categorie.create.name") }}</label> 
-        <input type="text" class="form-control" id="nomCategorie" v-model="form.nom" required>
-      </div>
-      <div class="d-flex justify-content-between">
-        <router-link to="/categorie" class="btn btn-success">
-          <i class="fa-solid fa-arrow-left"></i>
-        </router-link>
-        <button class="btn btn-success">{{ $t("categorie.create.boutton") }}</button> 
-      </div>
-    </form>
+  <div class="container-fluid">
+    <h2>{{ $t("categorie.detail.titre") }}</h2>
+    <div v-if="categorie">
+      <p><strong>{{ $t("categorie.detail.nom") }}:</strong> {{ categorie.nom }}</p>
+    </div>
+    <div v-else>
+      <p>{{ $t("categorie.detail.noData") }}</p>
+    </div>
+    <router-link to="/categorie" class="btn btn-secondary">
+      {{ $t("categorie.detail.retour") }}
+    </router-link>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import { useCategorieStore } from '@store';
-import { useI18n } from 'vue-i18n'; 
 
-const { t } = useI18n(); 
-const categorie = useCategorieStore();
-const form = categorie.categorieForm
+const route = useRoute();
+const store = useCategorieStore();
+const categorie = ref(null);
 
-const onSubmit = async () => {
-  try {
-    await categorie.store({
-      nom: form.nom
-    })
-  } catch (error) {
-    console.log(error.message);
+onMounted(() => {
+  const id = route.params.id;
+  categorie.value = store.categories.find(cat => cat.id === parseInt(id));
+
+  // Si la catégorie n'existe pas encore, tu peux forcer un rechargement depuis l'API
+  if (!categorie.value) {
+    store.loadDataFromApi().then(() => {
+      categorie.value = store.categories.find(cat => cat.id === parseInt(id));
+    });
   }
-};
+});
 </script>
 
 <style scoped>
-.container {
-  max-width: 600px;
-  margin: 0 auto;
+.container-fluid {
+  padding: 10px 10em;
 }
 </style>
