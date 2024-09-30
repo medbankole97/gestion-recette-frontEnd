@@ -81,6 +81,12 @@
             "titre": "Edit the Category",
             "name": "Category Name",
             "boutton": "Save"
-        }
+        },
+        "detail": {
+      "titre": "Category Details",
+      "nom": "Category Name",
+      "noData": "No category found",
+      "retour": "Back to categories"
+    }
     }
 }
