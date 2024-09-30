@@ -14,12 +14,6 @@ export const useRecetteStore = defineStore("recetteStore", {
     }),
   }),
   actions: {
-    resetForm() {
-      this.recetteForm.titre = null;
-      this.recetteForm.ingredients = null;
-      this.recetteForm.type = null;
-      this.recetteForm.categorie_id = null;
-    },
     async loadDataFromApi() {
       try {
         const resp = await axios.get("http://localhost:3022/recipes")
@@ -32,20 +26,24 @@ export const useRecetteStore = defineStore("recetteStore", {
       return await axios.post("http://localhost:3022/recipes", recette);
     },
     async update(id, recette) {
-      return await axios.put(`http://localhost:3022/recipes/${id}`, recette);
+      const resp = await axios.put(`http://localhost:3022/recipes/${id}`, recette);
+      await this.loadDataFromApi();
+      return resp
     },
     async destroy(id) {
       await axios.delete(`http://localhost:3022/recipes/${id}`);
       await this.loadDataFromApi()
     },
     async getById(id) {
-      const recette = await axios.get(`http://localhost:3022/recipes/${id}`);
-      return recette.data
+      const resp = await axios.get(`http://localhost:3022/recipes/${id}`)
+      return resp.data
     },
-    resetForm() {
+    async resetForm() {
       this.recetteForm.titre = null;
       this.recetteForm.ingredients = null;
       this.recetteForm.type = null;
+      this.recetteForm.categorie_id = null;
+
     },
   },
 });
