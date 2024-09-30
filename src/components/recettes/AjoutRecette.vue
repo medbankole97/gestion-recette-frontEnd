@@ -91,19 +91,4 @@ onMounted(() => {
   height: 100vh;
 }
 
-/* 
-@media (max-width: 768px) {
-  .hight {
-    height: 300px;
-  }
-}
-
-@media (max-width: 576px) {
-  .hight {
-    display: none;
-  }
-
-  .col-12 {
-    margin-top: 20px;
-  }
 </style>
