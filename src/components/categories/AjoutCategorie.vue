@@ -19,16 +19,20 @@
 <script setup>
 import { useCategorieStore } from '@store';
 import { useI18n } from 'vue-i18n'; 
+import { useRouter } from 'vue-router';
 
 const { t } = useI18n(); 
 const categorie = useCategorieStore();
 const form = categorie.categorieForm
+const router = useRouter();
 
 const onSubmit = async () => {
   try {
     await categorie.store({
       nom: form.nom
     })
+    await categorie.resetForm()
+    router.push('/categorie')
   } catch (error) {
     console.log(error.message);
   }

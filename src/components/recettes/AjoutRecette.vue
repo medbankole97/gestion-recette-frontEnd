@@ -38,7 +38,7 @@
           </div>
         </form>
       </div>
-      
+
       <!-- Image de droite cachée sur les petits écrans -->
       <div class="col-md-5 d-none d-md-block hight"></div>
     </div>
@@ -52,9 +52,8 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { onMounted } from 'vue';
 
-const store = useRecetteStore()
 const recette = useRecetteStore();
-let form = store.recetteForm
+let form = recette.recetteForm
 const storeC = useCategorieStore();
 const { t } = useI18n();
 const router = useRouter()
@@ -67,16 +66,12 @@ const onSubmit = async () => {
       type: form.type,
       categorie_id: form.categorie
     })
+    await recette.resetForm()
     router.push('/recette')
-    // form = {
-    //   titre: null,
-    //   ingredients: null,
-    //   type: null,
-    //   categorie_id: null,
-    // }
-  } catch (error) {
-    console.log(error.message);
-    
+  } catch (err) {
+    if (err.response.status == 422) {
+      console.log(err.response.data.errors.message.value);
+    }
   }
 };
 onMounted(() => {
@@ -99,18 +94,17 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .hight {
-    height: 300px; 
+    height: 300px;
   }
 }
 
 @media (max-width: 576px) {
   .hight {
-    display: none; 
+    display: none;
   }
 
   .col-12 {
     margin-top: 20px;
   }
 }
-
 </style>
