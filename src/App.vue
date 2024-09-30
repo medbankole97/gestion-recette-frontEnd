@@ -17,18 +17,6 @@
           </ul>
         </div>
 
-        <form class="d-flex" @submit.prevent="searchRecipe">
-          <div class="input-group">
-            <input
-              class="form-control"
-              type="search"
-              placeholder="Rechercher une recette"
-              v-model="searchQuery"
-              aria-label="Rechercher"
-            />
-            <button class="btn btn-outline-success" type="submit">Recherche</button>
-          </div>
-        </form>
         <div class="d-flex">
           <select id="langue" class="form-select form-select-sm bg-dark text-white border-0" @change="changeLanguage">
             <option value="en">En</option>
@@ -71,10 +59,10 @@ function changeLanguage(event) {
   locale.value = event.target.value;
 }
 
-function searchRecipe() {
-  recetteStore.searchRecettes(searchQuery.value);
-  noResults.value = recetteStore.searchResults.length === 0;
-}
+// function searchRecipe() {
+//   recetteStore.searchRecettes(searchQuery.value);
+//   noResults.value = recetteStore.searchResults.length === 0;
+// }
 </script>
 
 <style scoped>
