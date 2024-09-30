@@ -1,95 +1,41 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-7 m-auto">
-        <h3 class="text-center">{{ $t("recette.create.titre") }}</h3>
-        <form class="me-auto" @submit.prevent="onSubmit">
-          <div class="mb-3">
-            <label for="titre" class="form-label">{{ $t("recette.create.row1") }}</label>
-            <input type="text" class="form-control" id="titre" v-model="form.titre" required>
-          </div>
-          <div class="mb-3">
-            <label for="ingredients" class="form-label">{{ $t("recette.create.row2") }}</label>
-            <input type="text" class="form-control" id="ingredients" v-model="form.ingredients" required>
-          </div>
-          <div class="mb-3">
-            <label for="type" class="form-label">{{ $t("recette.create.row3.title") }}</label>
-            <select class="form-control" id="type" v-model="form.type" required>
-              <option value="Dessert">{{ $t("recette.create.row3.select1") }}</option>
-              <option value="Entrée">{{ $t("recette.create.row3.select2") }}</option>
-              <option value="Plat">{{ $t("recette.create.row3.select3") }}</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="categorie" class="form-label">{{ $t("recette.create.row4") }}</label>
-            <select class="form-control" id="categorie" v-model="form.categorie" required>
-              <option v-for="categorie in storeC.categories" :key="categorie.id" :value="categorie.id">
-                {{ categorie.nom }}
-              </option>
-            </select>
-          </div>
-
-          <div class="d-flex justify-content-between">
-            <router-link to="/recette" class="btn btn-success"><i class="fa-solid fa-arrow-left"></i></router-link>
-            <button class="btn btn-success">{{ $t("recette.create.boutton") }}</button>
-          </div>
-        </form>
-      </div>
-      <div class="col-md-5 hight"></div>
+    <h2>{{ $t("recette.detail.titre") }}</h2>
+    <div v-if="recette">
+      <p><strong>{{ $t("recette.detail.row1") }}:</strong> {{ recette.titre }}</p>
+      <p><strong>{{ $t("recette.detail.row2") }}:</strong> {{ recette.ingredients }}</p>
+      <p><strong>{{ $t("recette.detail.row3") }}:</strong> {{ recette.type }}</p>
+      <p><strong>{{ $t("recette.detail.row4") }}:</strong> {{ recette.nom }}</p> <!-- Catégorie -->
     </div>
+    <div v-else>
+      <p>{{ $t("recette.detail.noData") }}</p>
+    </div>
+    <router-link to="/recette" class="btn btn-secondary">
+      {{ $t("recette.detail.retour") }}
+    </router-link>
   </div>
 </template>
 
 <script setup>
-import { useRecetteStore, useCategorieStore } from '@store';
-import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { useRecetteStore } from '@store';
 import { useI18n } from 'vue-i18n';
-import { onMounted } from 'vue';
 
-const store = useRecetteStore()
-const recette = useRecetteStore();
-let form = store.recetteForm
-const storeC = useCategorieStore();
-const { t } = useI18n();
-const router = useRouter()
+const t = useI18n();
+const route = useRoute();
+const store = useRecetteStore();
+const recette = ref(null);
 
-const onSubmit = async () => {
-  try {
-    await recette.store({
-      titre: form.titre,
-      ingredients: form.ingredients,
-      type: form.type,
-      categorie_id: form.categorie
-    })
-    router.push('/recette')
-    // form = {
-    //   titre: null,
-    //   ingredients: null,
-    //   type: null,
-    //   categorie_id: null,
-    // }
-  } catch (error) {
-    console.log(error.message);
-    
-  }
-};
-onMounted(() => {
-  storeC.loadDataFromApi();
+onMounted(async () => {
+  const id = route.params.id;
+  // Appel pour charger la recette avec son id
+  recette.value = await store.getById(id);
 });
 </script>
 
 <style scoped>
 .container-fluid {
-  height: 100vh;
-}
-
-.row {
-  height: 100vh;
-}
-
-.hight {
-  background-image: url('/src/assets/cuisine/kebab.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  padding: 10px 10em;
 }
 </style>
