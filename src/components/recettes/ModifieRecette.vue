@@ -6,15 +6,15 @@
         <form class="me-auto" @submit.prevent="onEdit">
           <div class="mb-3">
             <label for="titre" class="form-label">{{ $t("recette.edit.row1") }}</label>
-            <input type="text" class="form-control" id="titre" v-model="titre">
+            <input type="text" class="form-control" id="titre" v-model="form.titre">
           </div>
           <div class="mb-3">
             <label for="ingredients" class="form-label">{{ $t("recette.edit.row2") }}</label>
-            <input type="text" class="form-control" id="ingredients" v-model="ingredients">
+            <input type="text" class="form-control" id="ingredients" v-model="form.ingredients">
           </div>
           <div class="mb-3">
             <label for="type" class="form-label">{{ $t("recette.edit.row3.title") }}</label>
-            <select class="form-control" id="type" v-model="type">
+            <select class="form-control" id="type" v-model="form.type">
               <option value="Dessert">{{ $t("recette.edit.row3.select1") }}</option>
               <option value="Entrée">{{ $t("recette.edit.row3.select2") }}</option>
               <option value="Plat">{{ $t("recette.edit.row3.select3") }}</option>
@@ -23,7 +23,7 @@
 
           <div class="mb-3">
             <label for="categorie" class="form-label">{{ $t("recette.create.row4") }}</label>
-            <select class="form-control" id="categorie" v-model="categorie" required>
+            <select class="form-control" id="categorie" v-model="form.id_cat" required>
               <option v-for="categorie in storeC.categories" :key="categorie.id" :value="categorie.id">
                 {{ categorie.nom }}
               </option>
@@ -58,20 +58,29 @@ const route = useRoute();
 const router = useRouter()
 
 const idRecette = route.params.id
-const titre = ref("")
-const ingredients = ref("")
-const type = ref("")
-const categorie = ref(0)
+
+const form = ref({
+  titre: "",
+  ingredients: "",
+  type: "",
+  id_cat: 0
+});
+// const titre = ref("")
+// const ingredients = ref("")
+// const type = ref("")
+// const categorie = ref(0)
 
 const onEdit = async () => {
-  console.log(titre.value, ingredients.value, type.value, categorie.value);
-  
   try {
     await store.update(idRecette, {
-      titre: titre.value,
-      ingredients: ingredients.value,
-      type: type.value,
-      categorie_id: categorie.value
+      titre: form.titre,
+      ingredients: form.ingredients,
+      type: form.type,
+      categorie_id: form.categorie
+      // titre: titre.value,
+      // ingredients: ingredients.value,
+      // type: type.value,
+      // categorie_id: categorie.value
     })
     await store.resetForm()
     router.push('/recette')
@@ -83,10 +92,11 @@ const onEdit = async () => {
 onMounted(async () => {
   storeC.loadDataFromApi();
   const recette = await store.getById(idRecette)
-  titre.value = recette.titre
-  ingredients.value = recette.ingredients
-  type.value = recette.type
-  categorie.value = recette.id_cat
+  form.value = recette
+  // titre.value = recette.titre
+  // ingredients.value = recette.ingredients
+  // type.value = recette.type
+  // categorie.value = recette.id_cat
 });
 </script>
 
