@@ -96,7 +96,7 @@ onMounted(() => {
   height: 100vh;
 }
 
-
+/* 
 @media (max-width: 768px) {
   .hight {
     height: 300px; 
@@ -111,6 +111,6 @@ onMounted(() => {
   .col-12 {
     margin-top: 20px;
   }
-}
+} */
 
 </style>
