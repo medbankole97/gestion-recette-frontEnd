@@ -84,10 +84,10 @@
         },
         "detail": {
             "titre": "Category Details",
-            "row1": "Nom de la recette",
+            "row1": "Recipe name",
             "row2": "Ingredients",
-            "row3":"Type de recette",
-            "row4":"Category de recette"
+            "row3":"Type of recipe",
+            "row4":"Category of recipe"
     }
     }
 }
