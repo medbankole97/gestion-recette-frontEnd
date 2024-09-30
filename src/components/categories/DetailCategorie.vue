@@ -1,12 +1,9 @@
 <template>
   <div class="container-fluid detail-container">
-    
-
-    <!-- Vérifie si la catégorie existe -->
-    <div v-if="categorie" class="card shadow-lg p-4 mb-5 bg-white rounded">
+    <div class="card shadow-lg p-4 mb-5 bg-white rounded">
       <h2 class="text-center">{{ $t("categorie.show.titre") }}</h2>
       <div class="card-body">
-        <h3 class="card-title">{{ categorie.nom }}</h3>
+        <h3 class="card-title">{{ categorie?.nom }}</h3>
       </div>
 
       <div class="text-center mt-4">
@@ -29,20 +26,14 @@ import { useI18n } from 'vue-i18n';
 const t = useI18n();
 const route = useRoute();
 const store = useCategorieStore();
-const categorie = ref(null); // Initialise la catégorie à null
+const id = route.params.id;
+const categorie = ref(null);
 
 onMounted(async () => {
-  try {
-    const id = route.params.id;
-    categorie.value = store.categories.find(cat => cat.id === parseInt(id));
-
-    // Si la catégorie n'existe pas dans le store, on la charge depuis l'API
-    if (!categorie.value) {
-      await store.loadDataFromApi();
-      categorie.value = store.categories.find(cat => cat.id === parseInt(id));
-    }
+  try { 
+    categorie.value = await store.getById(id)
   } catch (error) {
-    console.error("Erreur lors de la récupération de la catégorie:", error.message);
+    console.log(error);
   }
 });
 </script>
@@ -52,16 +43,13 @@ onMounted(async () => {
   max-width: 800px;
   margin: 2em auto;
   padding: 2em;
-  /* background-color: #f8f9fa; */
   border-radius: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .card {
   background-color: #fff;
   border: none;
   border-radius: 10px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   transition: transform 0.3s ease;
 }
 
