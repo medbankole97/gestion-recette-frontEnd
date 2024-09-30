@@ -83,10 +83,11 @@
             "boutton": "Save"
         },
         "detail": {
-      "titre": "Category Details",
-      "nom": "Category Name",
-      "noData": "No category found",
-      "retour": "Back to categories"
+            "titre": "Category Details",
+            "row1": "Nom de la recette",
+            "row2": "Ingredients",
+            "row3":"Type de recette",
+            "row4":"Category de recette"
     }
     }
 }

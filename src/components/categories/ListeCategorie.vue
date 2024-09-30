@@ -12,7 +12,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">{{ $t("categorie.list.col1") }}</th>
-            <th scope="col" class="text-center">{{ $t("categorie.list.col2") }}</th>
+            <th scope="col" class="text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -23,11 +23,14 @@
             <td scope="row">{{ index + 1 }}</td>
             <td>{{ categorie.nom }}</td>
             <td class="text-center">
-              <button @click="view(categorie)" class="btn btn-xs btn-success me-2" data-bs-toggle="modal"
+              <!-- <button @click="view(categorie)" class="btn btn-xs btn-info me-4" data-bs-toggle="modal"
                 data-bs-target="#categoryModal">
                 <i class="fa-solid fa-eye"></i>
-              </button>
-              <router-link :to="`/categorie/edit/${categorie.id}`" class="btn btn-xs btn-primary me-2">
+              </button> -->
+              <router-link :to="`/categorie/show/${categorie.id}`" class="btn btn-xs btn-info me-4">
+                <i class="fa-solid fa-eye"></i>
+              </router-link>
+              <router-link :to="`/categorie/edit/${categorie.id}`" class="btn btn-xs btn-primary me-4">
                 <i class="fa-solid fa-pen-to-square"></i>
               </router-link>
               <button @click="destroy(categorie.id)" class="btn btn-xs btn-danger">
@@ -39,6 +42,25 @@
       </table>
     </div>
   </div>
+
+  <!-- Modal d'Aperçu -->
+  <!-- <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="categoryModalLabel">{{ $t("categorie.show.titre") }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>{{ $t("categorie.show.row1") }}:</strong> {{ current?.value?.nom }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ $t("categorie.show.boutton")
+            }}</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </template>
 
 <script setup>
@@ -48,6 +70,11 @@ import { useI18n } from 'vue-i18n';
 
 const t = useI18n();
 const store = useCategorieStore();
+const current = ref(null);
+
+const view = (categorie) => {
+  current.value = categorie;
+};
 
 const destroy = (id) => {
   try {
