@@ -85,13 +85,13 @@ onMounted(() => {
 }
 
 .hight {
-  background-image: url('/src/assets/cuisine/kebab.jpg');
+  background-image: url('/src/assets/cuisine/boulette.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
 }
 
-
+/* 
 @media (max-width: 768px) {
   .hight {
     height: 300px;
@@ -106,5 +106,4 @@ onMounted(() => {
   .col-12 {
     margin-top: 20px;
   }
-}
 </style>

@@ -51,6 +51,16 @@
         "row2": "Ingrédients",
         "row3": "Type",
         "boutton": "Fermer"
+      },
+      "detail": 
+      {
+          "titre": "Détails de la Recette",
+          "row1": "Titre",
+          "row2": "Ingrédients",
+          "row3": "Type",
+          "row4": "Catégorie",
+          "noData": "Aucune recette trouvée",
+          "retour": "Retour aux recettes"
       }
     },
     "categorie": {

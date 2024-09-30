@@ -12,6 +12,7 @@ export const useRecetteStore = defineStore("recetteStore", {
       type: null,
       categorie_id: null,
     }),
+    searchResults: [], // Ajouter cette ligne
   }),
   actions: {
     async loadDataFromApi() {
