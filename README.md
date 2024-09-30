@@ -1,6 +1,6 @@
-# Gestionnaire de Recettes
+# Gestion Recette FrontEnd
 
-Ce projet est une application web de gestion de recettes développée avec Vue.js 3, Pinia pour la gestion d'état, et Vue Router pour la navigation. L'application permet aux utilisateurs de créer, lister, modifier et supprimer des recettes.
+Ce projet est une application web de gestion de recettes développée avec Vue.js 3, Pinia pour la gestion d'état, et Vue Router pour la navigation. L'application permet aux utilisateurs de créer, lister, modifier et supprimer des recettes et des catégories.
 
 ## Fonctionnalités
 
@@ -11,6 +11,14 @@ Ce projet est une application web de gestion de recettes développée avec Vue.j
 - Modifier une recette existante
 - Supprimer une recette
 - Visualiser les détails d'une recette
+
+**Gestion des Catégories**
+
+- Ajouter une nouvelle catégorie
+- Lister toutes les catégories
+- Modifier une catégorie existante
+- Supprimer une catégorie
+- Visualiser les détails d'une catégorie
 
 ## Installation
 
@@ -24,32 +32,27 @@ Ce projet est une application web de gestion de recettes développée avec Vue.j
 
 1. Clonez le dépôt :
 
-    ```bash
-    git clone https://github.com/Aichetou-Gaye/gestion-recette.git
-    ```
+```bash
+git clone https://github.com/Aichetou-Gaye/gestion-recette-frontEnd.git
+```
 
 2. Accédez au répertoire du projet :
 
-    ```bash
-    cd gestion-recette
-
-    ```
+```bash
+cd gestion-recette-frontEnd
+```
 
 3. Installez les dépendances :
 
-    Avec NPM :
-
-    ```bash
-    npm install
-    ```
+```bash
+ npm install
+ ```
 
 4. Lancez l'application en mode développement :
 
-    Avec NPM :
-
-    ```bash
-    npm run dev
-    ```
+```bash
+ npm run dev
+```
 
 ### Outils Utilisés
 `Vue.js 3` : Framework JavaScript pour construire l'interface utilisateur.
@@ -64,14 +67,16 @@ Ce projet est une application web de gestion de recettes développée avec Vue.j
 
 ## Utilisation
 
-- Naviguez entre les pages de menu via la barre de navigation.
-- Utilisez les formulaires pour ajouter ou modifier des recettes.
-- Visualisez les détails d'une recette en cliquant sur l'icône d'œil.
-- Naviguez vers patisserie pour avoir des idées de recettes
-- Naviguez vers Cuisine pour une inspiration de recettes
+- Naviguez entre recettes et catégories via la barre de navigation;
+- Utilisez les formulaires pour ajouter ou modifier des recettes ou des catégories;
+- Visualisez les détails d'une recette ou d'une catégorie en cliquant sur l'icône d'œil;
+- Cliquez sur le logo pour retourner vers la page d'accueil;
+- Effectuer une recherche de recette via la section de recherche de la barre de navigation;
+- Traduire la page en anglais ou en français.
 
 ##  Auteur
 [Aichetou Gaye](https://github.com/Aichetou-Gaye/)
 
+[Mohamed Bankolé](https://github.com/medbankole97)
 
 

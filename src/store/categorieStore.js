@@ -23,22 +23,27 @@ export const useCategorieStore = defineStore("categorieStore", {
       return await axios.post("http://localhost:3022/categories", categorie);
     },
     async update(id, categorie) {
-      return await axios.put(
+      const resp = await axios.put(
         `http://localhost:3022/categories/${id}`,
         categorie
       );
+      await this.loadDataFromApi();
+      return resp
     },
     async destroy(id) {
       await axios.delete(`http://localhost:3022/categories/${id}`);
       await this.loadDataFromApi();
     },
     async getById(id) {
-      await axios.get(`http://localhost:3022/categories/${id}`);
-      await this.loadDataFromApi();
+      const resp = await axios.get(`http://localhost:3022/categories/${id}`);
+      return resp.data
     },
     async recipes(id) {
       await axios.get(`http://localhost:3022/categories/recipes/${id}`);
       await this.loadDataFromApi();
     },
+    async resetForm() {
+      this.categorieForm.nom= null;
+    }
   },
 });

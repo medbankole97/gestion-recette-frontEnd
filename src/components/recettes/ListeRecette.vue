@@ -28,56 +28,46 @@
             <td>{{ item.type }}</td>
             <td>{{ item.nom }}</td>
             <td class="text-center">
+              <!-- <router-link :to="`/recette/show/${item.id}`" class="btn btn-xs btn-success me-2">
+                <i class="fa-solid fa-eye"></i>
+              </router-link> -->
+              <button class="btn btn-xs btn-success me-2"
+                @click="show(item.id)">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+              <router-link :to="`/recette/edit/${item.id}`" class="btn btn-xs btn-primary me-2">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </router-link>
               <button class="btn btn-xs btn-danger" @click="destroy(item.id)">
                 <i class="fa-solid fa-trash"></i>
               </button>
-              <router-link :to="`/recette/edit/${item.id}`" class="btn btn-xs btn-primary">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </router-link>
-              <button class="btn btn-xs btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                @click="view(item)">
-                <i class="fa-solid fa-eye"></i>
-              </button>
+              
+              
             </td>
           </tr>
         </tbody>
       </table>
-
-      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title fw-bold text-center text-danger" id="exampleModalLabel">{{ $t("recette.show.titre") }}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p><span class="fw-bold">{{ $t("recette.show.row1") }} :</span> {{ current?.titre }}</p>
-              <p><span class="fw-bold">{{ $t("recette.show.row2") }} : </span>{{ current?.ingredients }}</p>
-              <p><span class="fw-bold">{{ $t("recette.show.row3") }} : </span>{{ current?.type }}</p>
-              <p><span class="fw-bold">{{ $t("recette.show.row4") }} : </span>{{ current?.categorie }}</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">{{ $t("recette.show.boutton") }}</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
-
   </div>
 </template>
 
 <script setup>
 import { useRecetteStore } from '@store'
-import { onMounted, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const t = useI18n()
 
 const store = useRecetteStore()
-const router = useRouter()
+const show = async (id) => {
+  try {
+    const current = await store.getById(id)
+    console.log(current);
+    
+  } catch (error) {
+    alert(error)
+  }
+}
 
 const destroy = (id) => {
   try {
@@ -89,11 +79,6 @@ const destroy = (id) => {
     console.log(error.message);
     
   }
-}
-
-const current = ref(null)
-const view = (recette) => {
-  current.value = recette
 }
 
 onMounted(() => {
