@@ -26,7 +26,8 @@ Ce projet est une application web de gestion de recettes développée avec Vue.j
 - Node.js (version 14.x ou supérieure)
 - Vue.js 3 
 - Bootstrap 5.x (inclus dans le projet)
-- PINIA
+- PINIA pour la gestion des etats;
+- AXIOS (requêtes API)
 
 ### Étapes d'installation
 
@@ -73,6 +74,23 @@ cd gestion-recette-frontEnd
 - Cliquez sur le logo pour retourner vers la page d'accueil;
 - Effectuer une recherche de recette via la section de recherche de la barre de navigation;
 - Traduire la page en anglais ou en français.
+
+
+## Rêquetes API
+
+### Recettes
+- GET: /recipes => liste des recettes;
+- GET: /recipes/:id => detail d'une recette;
+- POST: /recipes => ajouter une recette;
+- PUT: /recipes/:id => modifier une recette;
+- DELETE: /recipes/:id => supprimer une recette.
+
+### Categories
+- GET: /categories => liste des categories;
+- GET: /categories/:id => detail d'une categorie;
+- POST: /categories => ajouter une categorie;
+- PUT: /categories/:id => modifier une categorie;
+- DELETE: /categories/:id => supprimer une categorie.
 
 ##  Auteur
 [Aichetou Gaye](https://github.com/Aichetou-Gaye/)
