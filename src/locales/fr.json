@@ -1,0 +1,92 @@
+{
+    "home": 
+    {
+        "title1": "Recettes",
+        "title2": "Catégories",
+        "accroche": "Découvrez et partagez les meilleures recettes du monde entier !",
+        "btn1": "Précédent",
+        "btn2": "Suivant"
+    },
+    "recette": 
+    {
+        "list": 
+        {
+            "titre": "Liste des Recettes",
+            "holder": "Rechercher une recette",
+            "boutton": "Nouvelle Recette",
+            "col1": "Titre",
+            "col2": "Ingrédients",
+            "col3": "Type",
+            "col4": "Catégorie",
+            "col5": "Action",
+            "data": "Pas de données"
+        },
+        "create": 
+        {
+            "titre": "Ajouter une Nouvelle Recette",
+            "row1": "Titre",
+            "row2": "Ingrédients",
+            "row3": 
+            {
+                "title": "Type",
+                "select1": "Dessert",
+                "select2": "Entrée",
+                "select3": "Plat"
+            },
+            "row4": "Catégorie",
+            "boutton": "Envoyer"
+        },
+        "edit": 
+        {
+            "titre": "Modifier la Recette",
+            "row1": "Titre",
+            "row2": "Ingrédients",
+            "row3": 
+            {
+                "title": "Type",
+                "select1": "Dessert",
+                "select2": "Entrée",
+                "select3": "Plat"
+            },
+            "boutton": "Enregistrer"
+        },
+        "show": 
+        {
+            "titre": "Détails de la Recette",
+            "row1": "Titre",
+            "row2": "Ingrédients",
+            "row3": "Type",
+            "row4": "Catégorie",
+            "boutton": "Retour"
+        }
+    },
+    "categorie": 
+    {
+        "list": 
+        {
+            "titre": "Liste des Catégories",
+            "col1": "Nom",
+            "col2": "Action",
+            "data": "Pas de données",
+            "boutton": "Nouvelle Catégorie"
+        },
+        "create": 
+        {
+            "titre": "Ajouter une Nouvelle Catégorie",
+            "name": "Nom",
+            "boutton": "Envoyer"
+        },
+        "edit": 
+        {
+            "titre": "Modifier la Catégorie",
+            "name": "Nom",
+            "boutton": "Enregistrer"
+        },
+        "show": 
+        {
+            "titre": "Détails Catégories",
+            "nom": "Nom",
+            "boutton": "Retour"
+        }
+    }
+}

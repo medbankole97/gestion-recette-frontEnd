@@ -1,109 +1,93 @@
 <template>
-  <nav class="navbar bg-white px-5">
-    <router-link to="/">
-      <img src="/src/assets/logo.png" alt="Logo" class="logo">
-    </router-link>
-    <form class="d-flex justify-content-around px-5">
-      <router-link to="/recette/patisserie" class="btn btn-outline-none me-3">{{ $t("recette.list.nav") }}</router-link>
-      <router-link to="/recette/cuisine" class="btn btn-outline-none">{{ $t("recette.list.nav2") }}</router-link>
-    </form>
-    <div>
-      <select id="langue" @change="change()">
-        <option value="en">En</option>
-        <option value="fr">Fr</option>
-      </select>
-    </div>
-  </nav>
   <div class="container-fluid">
     <h2>{{ $t("recette.list.titre") }}</h2>
-    <div class="d-flex justify-content-end mb-4 ">
-      <router-link to="/recette/new" class="btn btn-danger "><i class="fa-solid fa-plus"></i> {{ $t("recette.list.boutton") }}</router-link>
+
+    <div class="d-flex justify-content-between mb-4">
+      <input 
+        type="text" 
+        class="form-control w-50"
+        :placeholder= "$t('recette.list.holder')"
+        v-model="searchQuery"
+      />
+      <router-link to="/recette/new" class="btn btn-danger">
+        <i class="fa-solid fa-plus"></i> {{ $t("recette.list.boutton") }}
+      </router-link>
     </div>
+    
     <div class="contact-list-table">
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
-          <th scope="col">#</th>
-          <th scope="col">{{ $t("recette.list.col1") }}</th>
-          <th scope="col">{{ $t("recette.list.col2") }}</th>
-          <th scope="col">{{ $t("recette.list.col3") }}</th>
-          <th scope="col">{{ $t("recette.list.col4") }}</th>
+            <th scope="col">#</th>
+            <th scope="col">{{ $t("recette.list.col1") }}</th>
+            <th scope="col">{{ $t("recette.list.col2") }}</th>
+            <th scope="col">{{ $t("recette.list.col3") }}</th>
+            <th scope="col">{{ $t("recette.list.col4") }}</th>
+            <th scope="col" class="text-center">{{ $t("recette.list.col5") }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-if="store.recettes.length === 0">
-            <td colspan="5" class="text-center">{{ $t("recette.list.data") }}</td>
+          <tr v-if="filteredRecettes.length === 0">
+            <td colspan="6" class="text-center">{{ $t("recette.list.data") }}</td>
           </tr>
-          <tr v-for="item in store.recettes" :key="item.id">
+          <tr v-for="item in filteredRecettes" :key="item.id">
             <td scope="row">{{ `# ${item.id} ` }}</td>
             <td>{{ item.titre }}</td>
             <td>{{ item.ingredients }}</td>
             <td>{{ item.type }}</td>
-            <td>
-              <button class="btn btn-xs btn-danger me-4" @click="destroy(item.id)">
-                <i class="fa-solid fa-trash"></i>
-              </button>
-              <router-link :to="`/recette/edit/${item.id}`" class="btn btn-xs btn-primary me-4">
+            <td>{{ item.nom }}</td>
+            <td class="text-center">
+              <router-link :to="`/recette/show/${item.id}`" class="btn btn-xs btn-success me-2">
+                <i class="fa-solid fa-eye"></i>
+              </router-link>
+
+              <router-link :to="`/recette/edit/${item.id}`" class="btn btn-xs btn-primary me-2">
                 <i class="fa-solid fa-pen-to-square"></i>
               </router-link>
-              <button class="btn btn-xs btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                @click="view(item)">
-                <i class="fa-solid fa-eye"></i>
+              <button class="btn btn-xs btn-danger" @click="destroy(item.id)">
+                <i class="fa-solid fa-trash"></i>
               </button>
             </td>
           </tr>
         </tbody>
       </table>
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title fw-bold text-center text-danger" id="exampleModalLabel">{{ $t("recette.show.titre") }}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p><span class="fw-bold">{{ $t("recette.show.row1") }} :</span> {{ current?.titre }}</p>
-              <p><span class="fw-bold">{{ $t("recette.show.row2") }} : </span>{{ current?.ingredients }}</p>
-              <p><span class="fw-bold">{{ $t("recette.show.row3") }} : </span>{{ current?.type }}</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-bs-dismiss="modal">{{ $t("recette.show.boutton") }}</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-
   </div>
 </template>
 
 <script setup>
-import { useRecetteStore } from '@store'
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { I18nD, useI18n } from 'vue-i18n';
+import { ref, computed, onMounted } from 'vue';
+import { useRecetteStore } from '@store';
+import { useI18n } from 'vue-i18n';
 
-const t = useI18n()
+const t = useI18n();
+const store = useRecetteStore();
+const searchQuery = ref(""); 
 
-const store = useRecetteStore()
-const router = useRouter()
+
+const filteredRecettes = computed(() => {
+  if (searchQuery.value) {
+    return store.recettes.filter((recette) =>
+      recette.titre.toLowerCase().includes(searchQuery.value.toLowerCase())
+    );
+  }
+  return store.recettes;
+});
 
 const destroy = (id) => {
-  store.destroy(id)
+  try {
+    const verify = window.confirm("Etes vous sûr de vouloir supprimer cette recette");
+    if (verify) {
+      store.destroy(id);
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
-const current = ref(null)
-const view = (recette) => {
-  current.value = recette
-}
-
-// const change() {
-  
-// }
-
-
+onMounted(() => {
+  store.loadDataFromApi();
+});
 </script>
 
 <style scoped>
